@@ -1,9 +1,17 @@
 from flask import Flask, render_template
+from database import db, migrate
+from flask_bcrypt import Bcrypt
 
-app = Flask(__name__)
 
 
-transactions = [
+def create_app(config_class='config.DevelopmentConfig'):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
+    db.init_app(app)
+    bcrypt = Bcrypt(app)
+    migrate.init_app(app, db)
+
+    transactions = [
     {
         "date": "2024-04-01",
         "merchant": "Dough Diaries Bakery",
@@ -30,11 +38,26 @@ transactions = [
     }
 ]
 
+    #page routes
+    @app.route('/')
+    def home():
+        return render_template('index.html', username='Andrew', trans=transactions)
 
-@app.route('/')
-def home():
-    return render_template('index.html', username='Andrew', trans=transactions)
 
+
+    #route for analytics
+
+
+    #route for profile
+
+
+    #functional routes
+    # @app.route('/add_transaction')
+    # def add_transaction()
+
+
+    return app
 
 if __name__ == '__main__':
+    app = create_app('config.DevelopmentConfig')  # Using development config for running directly
     app.run(debug=True)
