@@ -1,0 +1,18 @@
+
+
+body{
+    color:white;
+}
+
+button{
+    width:100%;
+}
+
+row{
+    margin:auto;
+    position: relative;
+}
+
+.trans-col{
+    font-size: 0.8rem;
+}

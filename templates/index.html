@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        {% if username %}
+            <h1 class="col-8 my-3">Hi, {{ username }}</h1>
+        {% else %}
+            <h1 class="col-8">You're a Money Guru</h1>
+        {% endif %}
+
+        <h6 class="col-12">Track Expenses</h6>
+        <div class="col-12"><button class="btn btn-success">+</button></div>
+    </div>
+
+    <div class="row justify-content-center">
+    <p class="col-12">Recent Transactions</p>
+    {% for tran in trans %}
+    <div class="row trans-col w-100 justify-content-center">
+        <div class="col-3">{{ tran.date }}</div>
+        <div class="col-3">{{ tran.merchant }}</div>
+        <div class="col-3">{{ tran.category }}</div>
+        <div class="col-3">{{ tran.amount }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock %}

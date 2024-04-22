@@ -1,0 +1,50 @@
+
+
+body{
+    background: black;
+}
+
+header{
+    border-bottom: 2px solid white;
+}
+
+.logo{
+    background: url('../img/doughlogo.png');
+    background-size: cover;
+    background-position:center;
+    height:15vw;
+    width:40vw;
+    position:realtive;
+    margin:10vw auto 5vw auto;
+}
+
+
+.mobile-footer {
+    background-color: #333; /* dark background */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 2vw;
+}
+
+.nav-item img {
+    height: 10vw; /* Adjust size as needed */
+    width: auto;
+    filter: invert(100%); /* Makes the icons white */
+}
+
+/* Ensuring the mobile footer is only displayed on small screens */
+@media (min-width: 769px) {
+    .mobile-footer {
+        display: none;
+    }
+}
