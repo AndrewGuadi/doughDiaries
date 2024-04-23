@@ -11,36 +11,22 @@ def create_app(config_class='config.DevelopmentConfig'):
     bcrypt = Bcrypt(app)
     migrate.init_app(app, db)
 
-    transactions = [
-    {
-        "date": "2024-04-01",
-        "merchant": "Dough Diaries Bakery",
-        "category": "Food",
-        "amount": "5.99"
-    },
-    {
-        "date": "2024-04-02",
-        "merchant": "Bookworm Library",
-        "category": "Books",
-        "amount": "19.99"
-    },
-    {
-        "date": "2024-04-03",
-        "merchant": "Tech Gadgets",
-        "category": "Electronics",
-        "amount": "299.99"
-    },
-    {
-        "date": "2024-04-04",
-        "merchant": "Green Thumbs Nursery",
-        "category": "Gardening",
-        "amount": "35.50"
-    }
-]
+    def get_transactions(username):
+        # Find user by username
+        user = User.query.filter_by(username=username).first()
+        if not user:
+            return f"No user found with username {username}"
+
+        # Query all transactions for the user
+        transactions = Transaction.query.filter_by(user_id=user.id).all()
+        return transactions
+
 
     #page routes
     @app.route('/')
     def home():
+
+        transactions = get_transactions('user1')
         return render_template('index.html', username='Andrew', trans=transactions)
 
 
