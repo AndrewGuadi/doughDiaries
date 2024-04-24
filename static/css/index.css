@@ -16,3 +16,9 @@ row{
 .trans-col{
     font-size: 0.8rem;
 }
+
+.balance{
+    position: relative;
+    margin:auto;
+    border: 2px solid white;
+}

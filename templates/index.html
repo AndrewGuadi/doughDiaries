@@ -11,14 +11,16 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row mb-4">
-        {% if username %}
-            <h1 class="col-8 my-3">Hi, {{ username }}</h1>
+        {% if user.username %}
+            <h1 class="col-8 my-3">Hi, {{ user.username }}</h1>
+            <div class='balance col-8'>{{ user.balance }}</div>
         {% else %}
             <h1 class="col-8">You're a Money Guru</h1>
         {% endif %}
 
         <h6 class="col-12">Track Expenses</h6>
-        <div class="col-12"><button class="btn btn-success">+</button></div>
+        <!-- Trigger/Open The Modal -->
+        <div class="col-12"><button class="btn btn-success" data-toggle="modal" data-target="#addExpenseModal">+</button></div>
     </div>
 
     <div class="row justify-content-center">
@@ -31,7 +33,59 @@
         <div class="col-3">{{ tran.amount }}</div>
     </div>
     {% endfor %}
+    </div>
 </div>
 
+<!-- The Modal -->
+<div class="modal" id="addExpenseModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Expense</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form method="POST" action="{{ url_for('add_expense') }}"> <!-- Replace 'submit_route' with the actual route name -->
+          {{ form.hidden_tag() }}
+          <div class="form-group">
+              {{ form.date(class="form-control") }}
+          </div>
+          <div class="form-group">
+              {{ form.merchant.label }} 
+              {{ form.merchant(class="form-control") }}
+          </div>
+          <div class="form-group">
+              {{ form.amount.label }} 
+              {{ form.amount(class="form-control") }}
+          </div>
+          <div class="form-group">
+              {{ form.category.label }} 
+              {{ form.category(class="form-control") }}
+          </div>
+          {{ form.submit(class="btn btn-primary") }}
+      </form>
+
+       <!-- Flash message area -->
+       {% with messages = get_flashed_messages() %}
+       {% if messages %}
+       <div class="alert alert-info" role="alert">
+         {% for message in messages %}
+         {{ message }}<br>
+         {% endfor %}
+       </div>
+       {% endif %}
+       {% endwith %}
+       <!-- End of flash message area -->
+      
+      </div>
+
+    </div>
+  </div>
 </div>
+
+
 {% endblock %}
