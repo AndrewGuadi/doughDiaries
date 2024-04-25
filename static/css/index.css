@@ -22,3 +22,42 @@ row{
     margin:auto;
     border: 2px solid white;
 }
+.modal-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;   /* Aligns children elements vertically */
+}
+
+.switch-field {
+    display: flex;
+    justify-content: center;  /* Ensures the contents inside are centered */
+    width: 100%;              /* Ensures it takes the full width to allow centering */
+    margin: 10px auto;        /* Top and bottom margin 10px, left and right auto */
+}
+.switch-field input {
+    display: none;
+}
+.switch-field label {
+    background-color: #e4e4e4;
+    color: grey;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.switch-field label:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.switch-field input:checked + label {
+    background-color: #007bff;
+    color: white;
+}
+
+#transaction_type{
+    margin:auto;
+    position:relative;
+    display:flex;
+}

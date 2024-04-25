@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField, FloatField, SubmitField, SelectField
+from wtforms import StringField, DateField, FloatField, SubmitField, SelectField, RadioField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 class AddExpenseForm(FlaskForm):
@@ -7,4 +7,7 @@ class AddExpenseForm(FlaskForm):
     merchant = StringField('Merchant', validators=[DataRequired(), Length(max=50)], render_kw={"placeholder": "Enter merchant name"})
     amount = FloatField('Amount', validators=[DataRequired(), NumberRange(min=0.01)], render_kw={"placeholder": "Enter amount"})
     category = SelectField('Category', validators=[DataRequired()], choices=[('food_dining', 'Food & Dining'), ('transportation', 'Transportation'), ('groceries', 'Groceries'), ('utilities', 'Utilities'), ('entertainment', 'Entertainment'), ('health_fitness', 'Health & Fitness'), ('shopping', 'Shopping'), ('rent_mortgage', 'Rent or Mortgage'), ('insurance', 'Insurance'), ('miscellaneous', 'Miscellaneous')])
+    transaction_type = RadioField('Transaction Type', validators=[DataRequired()], choices=[('withdraw', 'Withdraw'), ('deposit', 'Deposit')], default='withdraw', render_kw={"class": "justify-content-center"})
     submit = SubmitField('Add')
+
+

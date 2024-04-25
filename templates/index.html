@@ -51,16 +51,19 @@
       <div class="modal-body">
         <form method="POST" action="{{ url_for('add_expense') }}"> <!-- Replace 'submit_route' with the actual route name -->
           {{ form.hidden_tag() }}
+          <div class="switch-field justify-content-center">
+            {{ form.transaction_type() }}
+          </div>
           <div class="form-group">
               {{ form.date(class="form-control") }}
           </div>
           <div class="form-group">
-              {{ form.merchant.label }} 
-              {{ form.merchant(class="form-control") }}
+            {{ form.amount.label }} 
+            {{ form.amount(class="form-control") }}
           </div>
           <div class="form-group">
-              {{ form.amount.label }} 
-              {{ form.amount(class="form-control") }}
+              {{ form.merchant.label }} 
+              {{ form.merchant(class="form-control") }}
           </div>
           <div class="form-group">
               {{ form.category.label }} 
