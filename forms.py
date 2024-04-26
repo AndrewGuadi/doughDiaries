@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, FloatField, SubmitField, SelectField, RadioField, PasswordField
 from wtforms.validators import DataRequired, Length, NumberRange, Length, Email, EqualTo
+from database import User
 
 class AddExpenseForm(FlaskForm):
     date = DateField('Date', validators=[DataRequired()], format='%Y-%m-%d', render_kw={"placeholder": "YYYY-MM-DD"})

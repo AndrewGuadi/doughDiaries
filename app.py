@@ -3,7 +3,7 @@ from database import db, migrate, User, Transaction
 from forms import AddExpenseForm, LoginForm, CreateUserForm
 from flask_wtf.csrf import CSRFProtect
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 
@@ -40,8 +40,8 @@ def create_app(config_class='config.DevelopmentConfig'):
             return redirect(url_for('home'))
         form = CreateUserForm()
         if form.validate_on_submit():
-            hashed_password = generate_password_hash(form.password.data, method='sha256')
-            user = User(username=form.username.data, first_name=form.first_name.data, last_name=form.last_name.form, email=form.email.data, password_hash=hashed_password)
+            hashed_password = generate_password_hash(form.password.data)
+            user = User(username=form.username.data.lower().strip(), first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data.lower().strip(), password_hash=hashed_password)
             db.session.add(user)
             db.session.commit()
             flash('Your account has been created! You are now able to log in', 'success')
@@ -55,8 +55,8 @@ def create_app(config_class='config.DevelopmentConfig'):
             return redirect(url_for('home'))
         form = LoginForm()
         if form.validate_on_submit():
-            user = User.query.filter_by(username=form.username.data).first()
-            if user and user.check_password(form.password.data):  # Assuming you have a method to check hashed passwords
+            user = User.query.filter_by(username=form.username.data.lower().strip()).first()
+            if user and user.check_password(form.password.data.strip()):  # Assuming you have a method to check hashed passwords
                 login_user(user)
                 next_page = request.args.get('next')
                 return redirect(next_page or url_for('home'))
