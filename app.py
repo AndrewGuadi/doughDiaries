@@ -34,6 +34,20 @@ def create_app(config_class='config.DevelopmentConfig'):
         transactions = Transaction.query.filter_by(user_id=user.id).all()
         return transactions
 
+    @app.route('/register', methods=['GET', 'POST'])
+    def register():
+        if current_user.is_authenticated:
+            return redirect(url_for('home'))
+        form = CreateUserForm()
+        if form.validate_on_submit():
+            hashed_password = generate_password_hash(form.password.data, method='sha256')
+            user = User(username=form.username.data, first_name=form.first_name.data, last_name=form.last_name.form, email=form.email.data, password_hash=hashed_password)
+            db.session.add(user)
+            db.session.commit()
+            flash('Your account has been created! You are now able to log in', 'success')
+            return redirect(url_for('login'))
+        return render_template('register.html', title='Register', form=form)
+
 
     @app.route('/login', methods=['GET', 'POST'])
     def login():
@@ -49,6 +63,12 @@ def create_app(config_class='config.DevelopmentConfig'):
             else:
                 flash('Login Unsuccessful. Please check username and password', 'danger')
         return render_template('login.html', title='Login', form=form)
+
+
+    @app.route('/logout')
+    def logout():
+        logout_user()
+        return redirect(url_for('home'))
 
     @app.route('/add_expense', methods=['GET', 'POST'])
     def add_expense():

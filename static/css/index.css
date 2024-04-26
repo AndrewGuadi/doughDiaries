@@ -37,6 +37,12 @@ row{
 .deposit{
     color:green;
 }
+
+.logout{
+    position:relative;
+    margin-right:0;
+}
+
 .modal-body {
     display: flex;
     justify-content: center;

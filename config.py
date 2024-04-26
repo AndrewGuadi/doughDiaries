@@ -11,11 +11,14 @@ class Config:
 class ProductionConfig(Config):
     """Production-specific configuration."""
     # SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///production.db')
+    # SESSION_COOKIE_SECURE = True
+    # PERMANENT_SESSION_LIFETIME = timedelta(minutes=5)
     # DEBUG = False
 
 class DevelopmentConfig(Config):
     """Development environment specific configuration."""
     SECRET_KEY = 'SECRETS_NEED_CHANGED'
+    SESSION_COOKIE_SECURE = True
     PERMANENT_SESSION_LIFETIME = timedelta(minutes=5)
     SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
     DEBUG = True
