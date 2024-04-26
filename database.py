@@ -3,12 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+from flask_login import UserMixin
 
 
 db = SQLAlchemy()
 migrate = Migrate()
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(30))
     last_name = db.Column(db.String(30))
@@ -39,6 +40,7 @@ class User(db.Model):
 
 class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    transaction_type = db.Column(db.String(10))
     date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     merchant = db.Column(db.String(50), nullable=True)
     amount = db.Column(db.Float(), nullable=False)

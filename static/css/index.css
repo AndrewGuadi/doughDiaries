@@ -7,7 +7,12 @@ body{
 button{
     width:100%;
 }
-
+.title-balance{
+    position: relative;
+    margin:auto;
+    text-align: center;
+    font-size:0.75rem;
+}
 row{
     margin:auto;
     position: relative;
@@ -18,9 +23,19 @@ row{
 }
 
 .balance{
+    font-weight:700;
+    text-align: center;
+    font-size: 2.5rem;
     position: relative;
     margin:auto;
     border: 2px solid white;
+}
+
+.withdraw{
+    color:red;
+}
+.deposit{
+    color:green;
 }
 .modal-body {
     display: flex;

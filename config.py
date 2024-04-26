@@ -13,6 +13,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     """Development environment specific configuration."""
+    SECRET_KEY = 'SECRETS_NEED_CHANGED'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
     DEBUG = True
 

@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 
@@ -10,30 +9,45 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row mb-4">
-        {% if user.username %}
-            <h1 class="col-8 my-3">Hi, {{ user.username }}</h1>
-            <div class='balance col-8'>{{ user.balance }}</div>
-        {% else %}
-            <h1 class="col-8">You're a Money Guru</h1>
-        {% endif %}
+  <div class="row mb-4">
+    {% if user.username %}
+    <h1 class="col-8 my-3">Hi, {{ user.username }}</h1>
+    <div class='balance col-6 my-2'>
+      <h3 class="col-8 title-balance">BALANCE</h3>
+      {{ "%.2f"|format(user.balance) }}</div>
+    {% else %}
+    <h1 class="col-8 text-center">You're a Money Guru</h1>
+    {% endif %}
 
-        <h6 class="col-12">Track Expenses</h6>
-        <!-- Trigger/Open The Modal -->
-        <div class="col-12"><button class="btn btn-success" data-toggle="modal" data-target="#addExpenseModal">+</button></div>
+    <h6 class="col-12">Track Expenses</h6>
+    <!-- Trigger/Open The Modal -->
+    <div class="col-12"><button class="btn btn-success" data-toggle="modal" data-target="#addExpenseModal">+</button>
     </div>
+  </div>
 
-    <div class="row justify-content-center">
+  <!-- Flash message area -->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="alert alert-info" role="alert">
+    {% for message in messages %}
+    {{ message }}<br>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+  <!-- End of flash message area -->
+
+  <div class="row justify-content-center mb-5">
     <p class="col-12">Recent Transactions</p>
     {% for tran in trans %}
-    <div class="row trans-col w-100 justify-content-center">
-        <div class="col-3">{{ tran.date }}</div>
-        <div class="col-3">{{ tran.merchant }}</div>
-        <div class="col-3">{{ tran.category }}</div>
-        <div class="col-3">{{ tran.amount }}</div>
+    <div class="row trans-col w-100 justify-content-center {{ tran.transaction_type }}">
+      <div class="col-3">{{ tran.date }}</div>
+      <div class="col-3">{{ tran.merchant }}</div>
+      <div class="col-3">{{ tran.category }}</div>
+      <div class="col-3">{{ "%.2f"|format(tran.amount) }}</div>
     </div>
     {% endfor %}
-    </div>
+  </div>
 </div>
 
 <!-- The Modal -->
@@ -49,41 +63,42 @@
 
       <!-- Modal Body -->
       <div class="modal-body">
-        <form method="POST" action="{{ url_for('add_expense') }}"> <!-- Replace 'submit_route' with the actual route name -->
+        <form method="POST" action="{{ url_for('add_expense') }}">
+          <!-- Replace 'submit_route' with the actual route name -->
           {{ form.hidden_tag() }}
           <div class="switch-field justify-content-center">
             {{ form.transaction_type() }}
           </div>
           <div class="form-group">
-              {{ form.date(class="form-control") }}
+            {{ form.date(class="form-control") }}
           </div>
           <div class="form-group">
-            {{ form.amount.label }} 
+            {{ form.amount.label }}
             {{ form.amount(class="form-control") }}
           </div>
           <div class="form-group">
-              {{ form.merchant.label }} 
-              {{ form.merchant(class="form-control") }}
+            {{ form.merchant.label }}
+            {{ form.merchant(class="form-control") }}
           </div>
           <div class="form-group">
-              {{ form.category.label }} 
-              {{ form.category(class="form-control") }}
+            {{ form.category.label }}
+            {{ form.category(class="form-control") }}
           </div>
           {{ form.submit(class="btn btn-primary") }}
-      </form>
+        </form>
 
-       <!-- Flash message area -->
-       {% with messages = get_flashed_messages() %}
-       {% if messages %}
-       <div class="alert alert-info" role="alert">
-         {% for message in messages %}
-         {{ message }}<br>
-         {% endfor %}
-       </div>
-       {% endif %}
-       {% endwith %}
-       <!-- End of flash message area -->
-      
+        <!-- Flash message area -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-info" role="alert">
+          {% for message in messages %}
+          {{ message }}<br>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <!-- End of flash message area -->
+
       </div>
 
     </div>
