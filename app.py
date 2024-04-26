@@ -85,12 +85,12 @@ def create_app(config_class='config.DevelopmentConfig'):
             try:
                 db.session.add(new_transaction)
                 if form.transaction_type.data == "deposit":
-                    user = User.query.get(4)
+                    user = User.query.get(current_user.id)
                     user.balance += form.amount.data
                     db.session.commit()
                     flash(f'{form.amount.data} deposited successfully!')
                 elif form.transaction_type.data == "withdraw":
-                    user = User.query.get(4)
+                    user = User.query.get(current_user.id)
                     if user.balance >= abs(form.amount.data):
                         user.balance -= abs(form.amount.data)
                         db.session.commit()
