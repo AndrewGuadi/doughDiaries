@@ -123,7 +123,8 @@ def create_app(config_class='config.DevelopmentConfig'):
     @app.route('/profile')
     @login_required
     def profile():
-        return render_template('profile.html')
+        user = current_user
+        return render_template('profile.html', user=user)
 
 
     #functional routes
