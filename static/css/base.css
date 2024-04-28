@@ -7,9 +7,9 @@ body{
     background: black;
 }
 
-header{
+/* header{
     border-bottom: 2px solid white;
-}
+} */
 
 .logo{
     background: url('../img/doughlogo.png');
