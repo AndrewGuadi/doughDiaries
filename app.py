@@ -117,6 +117,31 @@ def create_app(config_class='config.DevelopmentConfig'):
 
 
     #route for analytics
+    @app.route('/analytics')
+    def analytics():
+        user_id = current_user.id
+        # Fetch all transactions for the given user ID
+        transactions = Transaction.query.filter_by(user_id=user_id).all()
+
+        # Check if transactions exist
+        if not transactions:
+            return render_template('analytics.html', data=None, message="No transactions available.")
+
+        # Aggregate data by categories
+        categories = {}
+        for transaction in transactions:
+            if transaction.category in categories:
+                categories[transaction.category] += transaction.amount
+            else:
+                categories[transaction.category] = transaction.amount
+
+        # Data for the pie chart
+        data = {
+            'Categories': categories
+        }
+
+        # Render the analytics template with the data
+        return render_template('analytics.html', data=data)
 
 
     #route for profile

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        body{
+            color:white;
+        }
+        .back-button {
+                color: white;  /* Sets the color of the arrow */
+                padding: 10px; /* Adjust padding as needed */
+                font-size: 24px; /* Adjust size as needed */
+                border: none; /* Removes border */
+                background: transparent; /* Transparent background */
+            }
+
+            .back-button:hover {
+                color: #ccc; /* Lighter shade on hover for visual feedback */
+                text-decoration: none; /* Removes underline effect on hover */
+                background: rgba(255, 255, 255, 0.1); /* Optional: slight background on hover */
+            }
+    </style>
+{% endblock %}
+
+{% block title %}
+Analytics - My Application
+{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('home') }}" class="btn btn-light back-button">
+    <i class="bi bi-arrow-left"></i>
+</a>
+
+<div class="container">
+    <h1>Analytics</h1>
+    {% if data %}
+    <canvas id="pieChart" width="400" height="400"></canvas>
+    {% else %}
+    <p>{{ message }}</p>
+    {% endif %}
+</div>
+{% if data %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {{ data.Categories.keys() | list | tojson }},
+        datasets: [{
+            data: {{ data.Categories.values() | list | tojson }},
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+                }]
+            },
+        options: {
+        responsive: true,
+        legend: {
+            position: 'top',
+        },
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        }
+    }
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}
