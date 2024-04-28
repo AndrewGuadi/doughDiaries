@@ -28,14 +28,13 @@ row{
     font-size: 2.5rem;
     position: relative;
     margin:auto;
-    border: 2px solid white;
 }
 
 .withdraw{
-    color:red;
+    color:white;
 }
 .deposit{
-    color:green;
+    color:white;
 }
 
 .logout{
