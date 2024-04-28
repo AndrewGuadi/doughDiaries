@@ -31,7 +31,7 @@ def create_app(config_class='config.DevelopmentConfig'):
             return f"No user found with username {username}"
 
         # Query all transactions for the user
-        transactions = Transaction.query.filter_by(user_id=user.id).all()
+        transactions = Transaction.query.filter_by(user_id=current_user.id).order_by(Transaction.date.desc()).all()
         return transactions
 
     @app.route('/register', methods=['GET', 'POST'])
