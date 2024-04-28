@@ -31,7 +31,7 @@ def create_app(config_class='config.DevelopmentConfig'):
             return f"No user found with username {username}"
 
         # Query all transactions for the user
-        transactions = Transaction.query.filter_by(user_id=user.id).all()
+        transactions = Transaction.query.filter_by(user_id=current_user.id).order_by(Transaction.date.desc()).all()
         return transactions
 
     @app.route('/register', methods=['GET', 'POST'])
@@ -117,9 +117,39 @@ def create_app(config_class='config.DevelopmentConfig'):
 
 
     #route for analytics
+    @app.route('/analytics')
+    def analytics():
+        user_id = current_user.id
+        # Fetch all transactions for the given user ID
+        transactions = Transaction.query.filter_by(user_id=user_id).all()
+
+        # Check if transactions exist
+        if not transactions:
+            return render_template('analytics.html', data=None, message="No transactions available.")
+
+        # Aggregate data by categories
+        categories = {}
+        for transaction in transactions:
+            if transaction.category in categories:
+                categories[transaction.category] += transaction.amount
+            else:
+                categories[transaction.category] = transaction.amount
+
+        # Data for the pie chart
+        data = {
+            'Categories': categories
+        }
+
+        # Render the analytics template with the data
+        return render_template('analytics.html', data=data)
 
 
     #route for profile
+    @app.route('/profile')
+    @login_required
+    def profile():
+        user = current_user
+        return render_template('profile.html', user=user)
 
 
     #functional routes

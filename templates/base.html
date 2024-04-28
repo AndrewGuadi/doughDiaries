@@ -21,13 +21,13 @@
 
     <footer class="mobile-footer">
         <nav class="nav-menu">
-            <a href="/" class="nav-item">
+            <a href="{{ url_for('home') }}" class="nav-item">
                 <img src="{{ url_for('static', filename='img/home.png') }}" alt="Home">
             </a>
             <a href="/analytics" class="nav-item">
                 <img src="{{ url_for('static', filename='img/analytics.png') }}" alt="Analytics">
             </a>
-            <a href="/profile.html" class="nav-item">
+            <a href="/profile" class="nav-item">
                 <img src="{{ url_for('static', filename='img/profile.png') }}" alt="Profile">
             </a>
         </nav>
