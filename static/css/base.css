@@ -3,6 +3,7 @@ html{
     width:100vw;
 }
 body{
+    overflow-y: scroll;
     background: black;
 }
 
