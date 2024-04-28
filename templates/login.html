@@ -16,6 +16,18 @@
     </style>
 </head>
 <body>
+    <!-- Flash message area -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-info" role="alert">
+      {% for message in messages %}
+      {{ message }}<br>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    <!-- End of flash message area -->
+
     <div class="container">
         <h1 class="mb-3">Login</h1>
         <form method="POST" action="">
