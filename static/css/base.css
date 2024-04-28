@@ -1,5 +1,7 @@
 
-
+html{
+    width:100vw;
+}
 body{
     background: black;
 }

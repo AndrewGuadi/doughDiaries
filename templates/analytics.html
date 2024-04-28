@@ -18,6 +18,9 @@
                 text-decoration: none; /* Removes underline effect on hover */
                 background: rgba(255, 255, 255, 0.1); /* Optional: slight background on hover */
             }
+            #pieChart{
+                margin-bottom:200px !important;
+            }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -32,10 +35,10 @@ Analytics - My Application
     <i class="bi bi-arrow-left"></i>
 </a>
 
-<div class="container">
+<div class="container mb-5">
     <h1>Analytics</h1>
     {% if data %}
-    <canvas id="pieChart" width="400" height="400"></canvas>
+    <canvas id="pieChart" width="400" height="400" class="mb-5"></canvas>
     {% else %}
     <p>{{ message }}</p>
     {% endif %}
