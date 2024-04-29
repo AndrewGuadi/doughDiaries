@@ -40,6 +40,7 @@ row{
 .logout{
     position:relative;
     margin-right:0;
+    color: white;
 }
 
 .modal-body {
