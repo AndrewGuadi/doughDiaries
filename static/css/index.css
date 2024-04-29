@@ -43,6 +43,11 @@ row{
     color: white;
 }
 
+.a.logout{
+    color:white;
+}
+    
+
 .modal-body {
     display: flex;
     justify-content: center;
