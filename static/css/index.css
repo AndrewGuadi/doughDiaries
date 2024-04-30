@@ -40,7 +40,13 @@ row{
 .logout{
     position:relative;
     margin-right:0;
+    color: white;
 }
+
+.a.logout{
+    color:white;
+}
+    
 
 .modal-body {
     display: flex;
