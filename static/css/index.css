@@ -38,11 +38,11 @@ row{
 }
     
 .modal-content{
-    background-color: rgb(108, 108, 108);
+    background-color: rgb(65, 65, 65);
     margin-top:25vw;
 }
 .modal-body {
-    background-color: rgb(108, 108, 108);
+    background-color: rgb(65, 65, 65);
     color:white;
     display: flex;
     justify-content: center;
@@ -52,10 +52,28 @@ row{
     background-color: rgb(155, 155, 155);
     border-radius: 25px;
     color:white;
+    border:solid rgb(155, 155, 155) 0px;
 }
 #category{
     padding-right:50px;
 }
+#submit{
+    position:relative;
+    margin-left: 10%;
+    width:80%;
+    border-radius: 25px;
+}
+
+ul, ol { /* This applies the style to all unordered and ordered lists */
+    list-style-type: none; /* Removes bullet points or numbers */
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margins */
+}
+  
+input::placeholder {
+    color: #ffffff!important; /* Light gray color; adjust as needed */
+    opacity: 1; /* Optional: Ensures the color isn't partially transparent */
+  }
 
 .close{
     width:15vw;
@@ -72,7 +90,7 @@ row{
 .switch-field label {
     background-color: #e4e4e4;
     color: grey;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1;
     text-align: center;
     padding: 8px 16px;
@@ -84,7 +102,7 @@ row{
     background-color: rgba(0, 0, 0, 0.1);
 }
 .switch-field input:checked + label {
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
 }
 
