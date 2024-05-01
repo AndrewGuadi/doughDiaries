@@ -29,6 +29,15 @@
                 text-decoration: none; /* Removes underline effect on hover */
                 background: rgba(255, 255, 255, 0.1); /* Optional: slight background on hover */
             }
+            .logout{
+                position:relative;
+                margin-right:0;
+                color: white;
+            }
+
+            .a.logout{
+                color:white;
+            }
         </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     {% endblock %}
@@ -52,7 +61,8 @@
             <label>Joined:</label>
             <p>{{ user.joined_date }}</p>
         </div>
-        <a href="/edit_profile" class="btn btn-primary">Edit Profile</a>
+        <a  id="logout" href="{{ url_for('logout') }}"><p>Logout</p></a>
+        <a href="#" class="btn btn-primary">Edit Profile</a> 
     </div>
 
 {% endblock %}

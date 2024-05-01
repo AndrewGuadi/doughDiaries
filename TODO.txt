@@ -1,0 +1,20 @@
+
+1) Create the add transaction html popup
+2) Add Profile Page
+3) Add Analytics Page
+4) Create Database
+    a) create models.py
+        -transactions
+        -users
+5) Create transaction route
+6) Create Home/Login Page
+7) Create create_user path
+
+
+
+1) Fix size of current balance
+2) Fix withdraw functionality
+3)Make the transaction history types show up red or green
+4)
+
+
