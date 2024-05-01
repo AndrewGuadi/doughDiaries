@@ -37,13 +37,29 @@ row{
     color:white;
 }
     
-
+.modal-content{
+    background-color: rgb(108, 108, 108);
+    margin-top:25vw;
+}
 .modal-body {
+    background-color: rgb(108, 108, 108);
+    color:white;
     display: flex;
     justify-content: center;
     flex-direction: column;   /* Aligns children elements vertically */
 }
+#date, #amount, #merchant, #category{
+    background-color: rgb(155, 155, 155);
+    border-radius: 25px;
+    color:white;
+}
+#category{
+    padding-right:50px;
+}
 
+.close{
+    width:15vw;
+}
 .switch-field {
     display: flex;
     justify-content: center;  /* Ensures the contents inside are centered */
