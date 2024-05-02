@@ -41,9 +41,9 @@
     <p class="col-12">Recent Transactions</p>
     {% for tran in trans %}
       <div class="row trans-col w-100 justify-content-center {{ tran.transaction_type }}">
-        <div class="col-2">{{ tran.date.strftime('%Y-%m-%d') }}</div>
+        <div class="col-3">{{ tran.date.strftime('%B %d, %Y') }}</div>
         <div class="col-3">{{ tran.merchant }}</div>
-        <div class="col-3">{{ tran.category }}</div>
+        <div class="col-2">{{ tran.category }}</div>
         <div class="col-2">{{ "%.2f"|format(tran.amount) }}</div>
         <!-- Trigger/Open The Modal for Editing Transaction -->
         <button class="btn btn-link col-2" data-toggle="modal" data-target="#editExpenseModal" 
@@ -163,7 +163,7 @@
             </select>
           </div>
 
-          <!-- Transaction Type Radio Buttons -->
+          <!-- Transaction Type Radio Buttons
           <div class="form-group">
             <div>Transaction Type:</div>
             <div class="form-check">
@@ -174,7 +174,7 @@
               <input class="form-check-input" type="radio" name="transaction_type" id="deposit" value="deposit" required>
               <label class="form-check-label" for="deposit">Deposit</label>
             </div>
-          </div>
+          </div> -->
 
           <!-- Submit Button -->
           <div class="form-group">

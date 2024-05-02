@@ -48,6 +48,7 @@ def create_app(config_class='config.DevelopmentConfig'):
             'category': transaction.category,
             'transaction_type': transaction.transaction_type
         })
+        
     @app.route('/register', methods=['GET', 'POST'])
     def register():
         if current_user.is_authenticated:
