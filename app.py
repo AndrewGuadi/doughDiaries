@@ -127,18 +127,46 @@ def create_app(config_class='config.DevelopmentConfig'):
         if transaction.user_id != current_user.id:
             abort(403)  # Ensures that users can only edit their own transactions
 
-        form = AddExpenseForm(obj=transaction)
+        form = AddExpenseForm(obj=transaction)  # Assuming form pre-population
         if form.validate_on_submit():
-            transaction.transaction_type = form.transaction_type.data
+            original_amount = transaction.amount
+            original_type = transaction.transaction_type
+
+            # Get new data from form
+            new_type = form.transaction_type.data
+            new_amount = form.amount.data
+
+            if original_type == new_type:
+                # Same type but amount might have changed
+                if new_type == 'deposit':
+                    current_user.balance += (new_amount - original_amount)
+                elif new_type == 'withdraw':
+                    current_user.balance -= (new_amount - original_amount)
+            else:
+                # Type has changed; reverse the original and apply the new
+                if original_type == 'deposit' and new_type == 'withdraw':
+                    current_user.balance -= (original_amount + new_amount)  # remove original deposit and apply new withdrawal
+                elif original_type == 'withdraw' and new_type == 'deposit':
+                    current_user.balance += (original_amount + new_amount)  # add back original withdrawal and apply new deposit
+
+            # Update transaction details
+            transaction.transaction_type = new_type
             transaction.date = form.date.data
             transaction.merchant = form.merchant.data
-            transaction.amount = form.amount.data
+            transaction.amount = new_amount
             transaction.category = form.category.data
-            db.session.commit()
-            flash('Transaction has been updated!', 'success')
+
+            # Commit changes
+            try:
+                db.session.commit()
+                flash('Transaction updated successfully!', 'success')
+            except Exception as e:
+                db.session.rollback()
+                flash(f'Error updating transaction: {e}', 'danger')
+
             return redirect(url_for('home'))
-        # Note: The GET method is implicitly handled by passing obj=transaction when initializing form
-        return render_template('index.html', form=form, legend='Edit Transaction', transaction_id=transaction_id)
+
+        return render_template('edit_transaction.html', form=form, transaction_id=transaction_id)
 
     #page routes
     @app.route('/')
