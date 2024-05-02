@@ -14,7 +14,7 @@
     <h1 class="col-8 my-3">Hi, {{ user.username }}</h1>
     <div class='balance col-6 my-2'>
       <h3 class="col-8 title-balance">BALANCE</h3>
-      {{ "%.2f"|format(user.balance) }}$</div>
+      {{ "%.2f"|format(user.balance) }}</div>
     {% else %}
     <h1 class="col-8 text-center">You're a Money Guru</h1>
     {% endif %}
