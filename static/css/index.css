@@ -36,7 +36,32 @@ row{
 .deposit{
     color:white;
 }
-    
+.modal-header {
+    display: flex;
+    justify-content: space-between; /* Ensures space between left, middle, and right elements */
+    align-items: center; /* Centers the items vertically */
+    padding: 10px; /* Standard padding */
+}
+
+.modal-title {
+    flex-grow: 1; /* Allows the title to occupy any additional space */
+    text-align: center; /* Centers the title text */
+    margin: 0; /* Removes default margin to aid in centering */
+}
+
+
+.close{
+    width:15vw;
+    color:rgb(54, 138, 255);
+    font-size:1rem;
+    text-shadow:none;
+
+}
+/* Ensuring the cancel and add buttons do not grow to maintain their intended sizes */
+.modal-header .btn-secondary, .modal-header .btn-primary {
+    flex-shrink: 0;
+}
+
 .modal-content{
     background-color: rgb(65, 65, 65);
     margin-top:25vw;
@@ -50,13 +75,12 @@ row{
 }
 #date, #amount, #merchant, #category{
     background-color: rgb(155, 155, 155);
-    border-radius: 25px;
-    color:white;
-    border:solid rgb(155, 155, 155) 0px;
+    border-radius: 50px;
+    color: white;
+    border: solid rgb(155, 155, 155) 0px;
+    height: 15vw;
 }
-#category{
-    padding-right:50px;
-}
+
 #submit{
     position:relative;
     margin-left: 10%;
@@ -75,9 +99,7 @@ input::placeholder {
     opacity: 1; /* Optional: Ensures the color isn't partially transparent */
   }
 
-.close{
-    width:15vw;
-}
+
 .switch-field {
     display: flex;
     justify-content: center;  /* Ensures the contents inside are centered */
@@ -88,8 +110,8 @@ input::placeholder {
     display: none;
 }
 .switch-field label {
-    background-color: #e4e4e4;
-    color: grey;
+    background-color: rgb(155, 155, 155);
+    color: rgb(255, 255, 255);
     font-size: 18px;
     line-height: 1;
     text-align: center;
