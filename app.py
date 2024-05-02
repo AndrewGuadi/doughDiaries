@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, url_for, request
+from flask import Flask, render_template, flash, redirect, url_for, request, abort
 from database import db, migrate, User, Transaction
 from forms import AddExpenseForm, LoginForm, CreateUserForm
 from flask_wtf.csrf import CSRFProtect
@@ -34,6 +34,20 @@ def create_app(config_class='config.DevelopmentConfig'):
         transactions = Transaction.query.filter_by(user_id=current_user.id).order_by(Transaction.date.desc()).all()
         return transactions
 
+
+    @app.route('/api/transaction/<int:transaction_id>')
+    @login_required
+    def get_transaction(transaction_id):
+        transaction = Transaction.query.get_or_404(transaction_id)
+        if transaction.user_id != current_user.id:
+            abort(403)
+        return jsonify({
+            'date': transaction.date.strftime('%Y-%m-%d'),
+            'merchant': transaction.merchant,
+            'amount': transaction.amount,
+            'category': transaction.category,
+            'transaction_type': transaction.transaction_type
+        })
     @app.route('/register', methods=['GET', 'POST'])
     def register():
         if current_user.is_authenticated:
@@ -104,6 +118,26 @@ def create_app(config_class='config.DevelopmentConfig'):
                 db.session.rollback()
                 flash(f'There was an Error: {e}')
         return redirect(url_for('home'))
+
+    @app.route('/edit_transaction/<int:transaction_id>', methods=['GET', 'POST'])
+    @login_required
+    def edit_transaction(transaction_id):
+        transaction = Transaction.query.get_or_404(transaction_id)
+        if transaction.user_id != current_user.id:
+            abort(403)  # Ensures that users can only edit their own transactions
+
+        form = AddExpenseForm(obj=transaction)
+        if form.validate_on_submit():
+            transaction.transaction_type = form.transaction_type.data
+            transaction.date = form.date.data
+            transaction.merchant = form.merchant.data
+            transaction.amount = form.amount.data
+            transaction.category = form.category.data
+            db.session.commit()
+            flash('Transaction has been updated!', 'success')
+            return redirect(url_for('home'))
+        # Note: The GET method is implicitly handled by passing obj=transaction when initializing form
+        return render_template('index.html', form=form, legend='Edit Transaction', transaction_id=transaction_id)
 
     #page routes
     @app.route('/')

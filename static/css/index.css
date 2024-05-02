@@ -82,13 +82,12 @@ row{
     border-radius: 50px;
     color: white;
     border: solid rgb(155, 155, 155) 0px;
-    height: 15vw;
+    height: 10vw;
 }
 
 #submit{
     position:relative;
-    margin-left: 10%;
-    width:80%;
+    width:100%;
     border-radius: 25px;
 }
 
