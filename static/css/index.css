@@ -52,10 +52,14 @@ row{
 
 .close{
     width:15vw;
-    color:rgb(54, 138, 255);
+    color:white;
     font-size:1rem;
     text-shadow:none;
 
+}
+.close:hover{
+    color:rgb(155, 155, 155)!important;
+    background-color: none;
 }
 /* Ensuring the cancel and add buttons do not grow to maintain their intended sizes */
 .modal-header .btn-secondary, .modal-header .btn-primary {
