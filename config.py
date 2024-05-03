@@ -17,6 +17,12 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     """Development environment specific configuration."""
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'omyguasch@gmail.com'
+    MAIL_PASSWORD = 'cfmc vzvr wjkk nxyr'
+    MAIL_DEFAULT_SENDER = 'omyguasch@gmail.com'  # Default sender
     SECRET_KEY = 'SECRETS_NEED_CHANGED'
     PERMANENT_SESSION_LIFETIME = timedelta(days=7)
     SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
