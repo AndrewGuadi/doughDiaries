@@ -33,6 +33,7 @@
             margin-right: auto;
             width: 50%; /* Adjust width as needed */
         }
+    
         /* Responsive adjustments */
         @media (min-width: 768px) {
             .container {
@@ -55,7 +56,7 @@
     <!-- End of flash message area -->
 
     <div class="container">
-        <img src="{{ url_for('static', filename=('img/doughlogo.png')) }}" alt="Dough Diaries Logo">
+        <img class='mt-0' src="{{ url_for('static', filename=('img/doughlogo.png')) }}" alt="Dough Diaries Logo">
         <img src="{{ url_for('static', filename=('img/moneySigns.png')) }}" alt="Money Signs">
         <h1 class="mb-3">Login</h1>
         <form method="POST">

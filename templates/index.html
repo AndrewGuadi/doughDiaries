@@ -37,7 +37,7 @@
   {% endwith %}
   <!-- End of flash message area -->
 
-  <div class="row justify-content-center mb-5">
+  <div id="recentTransactions" class="row justify-content-center mb-5">
     <p class="col-12">Recent Transactions</p>
     {% for tran in trans %}
       <div class="row trans-col w-100 justify-content-center {{ tran.transaction_type }}">

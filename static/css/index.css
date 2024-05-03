@@ -17,6 +17,9 @@ row{
     margin:auto;
     position: relative;
 }
+#recentTransactions{
+    margin-bottom: 200px!important;
+}
 
 .trans-col{
     font-size: 0.8rem;

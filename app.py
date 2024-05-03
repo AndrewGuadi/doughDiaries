@@ -1,4 +1,5 @@
-from flask import Flask, render_template, flash, redirect, url_for, request, abort
+from flask import Flask, render_template, flash, redirect, url_for, request, abort, current_app
+from flask_mail import Mail, Message
 from database import db, migrate, User, Transaction
 from forms import AddExpenseForm, LoginForm, CreateUserForm
 from flask_wtf.csrf import CSRFProtect
@@ -11,6 +12,7 @@ def create_app(config_class='config.DevelopmentConfig'):
     app = Flask(__name__)
     app.config.from_object(config_class)
     db.init_app(app)
+    mail = Mail(app)
     migrate.init_app(app, db)
 
     login_manager = LoginManager(app)
@@ -23,6 +25,50 @@ def create_app(config_class='config.DevelopmentConfig'):
     def load_user(user_id):
         return User.query.get(int(user_id))
 
+    def send_welcome_email(user):
+        """Send a welcome email to the new user."""
+        mail = current_app.extensions.get('mail')
+        msg = Message("Welcome to DoughDiaries!",
+                    sender="noreply@doughdiaries.com",
+                    recipients=[user.email])
+        
+        msg.body = f'''
+        Hi {user.username},
+
+        Welcome to DoughDiaries - the app to help you save more, the more you spend!
+
+        We're excited to have you on board and can't wait to help you start saving smarter. Here are a few things you can do next:
+        - Explore your dashboard to track your expenses.
+        - Set up your savings goals.
+        - Customize your expense categories.
+
+        Remember, the more you use DoughDiaries, the more you can save!
+
+        Cheers,
+        The DoughDiaries Team
+        '''
+
+        msg.html = f'''
+        <h1>Welcome to DoughDiaries, {user.username}!</h1>
+        <p>We're thrilled to have you join us. DoughDiaries is designed to help you save more as you spend, enhancing your financial habits effectively.</p>
+        <ul>
+            <li>Explore your dashboard to start tracking your expenses.</li>
+            <li>Set and reach your savings goals with our tools.</li>
+            <li>Personalize your categories for a tailored experience.</li>
+        </ul>
+        <p>Remember, the more you engage with DoughDiaries, the better your savings journey!</p>
+        <p>Cheers,<br>
+        The DoughDiaries Team</p>
+        '''
+
+        try:
+            mail.send(msg)
+            return True
+        except Exception as e:
+            # Log the exception or handle it appropriately
+            print(f"Failed to send email: {e}")
+            return False
+ 
     def get_transactions(username):
         # Find user by username
         user = User.query.filter_by(username=username).first()
@@ -56,9 +102,18 @@ def create_app(config_class='config.DevelopmentConfig'):
         if form.validate_on_submit():
             hashed_password = generate_password_hash(form.password.data)
             user = User(username=form.username.data.lower().strip(), first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data.lower().strip(), password_hash=hashed_password)
-            db.session.add(user)
-            db.session.commit()
-            flash('Your account has been created! You are now able to log in', 'success')
+            try:
+                db.session.add(user)
+                db.session.commit()
+            except Exception as e:
+                db.session.rollback()
+                flash(f'Failed to Create Account. Please Retry {e}')
+            # Send welcome email
+            if send_welcome_email(user):
+                flash('Your account has been created! A welcome email has been sent.', 'success')
+            else:
+                flash('Your account has been created! However, there was a problem sending a welcome email.', 'warning')
+            
             return redirect(url_for('login'))
         return render_template('register.html', title='Register', form=form)
 
