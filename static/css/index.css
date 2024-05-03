@@ -31,10 +31,10 @@ row{
 }
 
 .withdraw{
-    color:white;
+    color:rgb(255, 0, 0);
 }
 .deposit{
-    color:white;
+    color:rgb(0, 255, 0);
 }
 .modal-header {
     display: flex;
