@@ -28,38 +28,10 @@ def create_app(config_class='config.DevelopmentConfig'):
     def send_welcome_email(user):
         """Send a welcome email to the new user."""
         mail = current_app.extensions.get('mail')
-        msg = Message("Welcome to DoughDiaries!",
-                    sender="noreply@doughdiaries.com",
-                    recipients=[user.email])
-        
-        msg.body = f'''
-        Hi {user.username},
-
-        Welcome to DoughDiaries - the app to help you save more, the more you spend!
-
-        We're excited to have you on board and can't wait to help you start saving smarter. Here are a few things you can do next:
-        - Explore your dashboard to track your expenses.
-        - Set up your savings goals.
-        - Customize your expense categories.
-
-        Remember, the more you use DoughDiaries, the more you can save!
-
-        Cheers,
-        The DoughDiaries Team
-        '''
-
-        msg.html = f'''
-        <h1>Welcome to DoughDiaries, {user.username}!</h1>
-        <p>We're thrilled to have you join us. DoughDiaries is designed to help you save more as you spend, enhancing your financial habits effectively.</p>
-        <ul>
-            <li>Explore your dashboard to start tracking your expenses.</li>
-            <li>Set and reach your savings goals with our tools.</li>
-            <li>Personalize your categories for a tailored experience.</li>
-        </ul>
-        <p>Remember, the more you engage with DoughDiaries, the better your savings journey!</p>
-        <p>Cheers,<br>
-        The DoughDiaries Team</p>
-        '''
+        msg = Message("Confirm your account, {}".format(user.first_name),
+                  sender="no-reply@doughdiaries.com",
+                  recipients=["user.email"])
+        msg.html = render_template("confirm_email.html", first_name=user.first_name)
 
         try:
             mail.send(msg)
