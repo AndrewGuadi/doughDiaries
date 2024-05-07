@@ -26,12 +26,14 @@ def create_app(config_class='config.DevelopmentConfig'):
         return User.query.get(int(user_id))
 
     def send_welcome_email(user):
-        """Send a welcome email to the new user."""
+        
         mail = current_app.extensions.get('mail')
         msg = Message("Confirm your account, {}".format(user.first_name),
                   sender="no-reply@doughdiaries.com",
-                  recipients=["user.email"])
-        msg.html = render_template("confirm_email.html", first_name=user.first_name)
+                  recipients=[user.email])
+        msg.html = render_template("confirm_email.html", first_name=user.first_name, activation_link="#")
+        with open('/workspaces/doughDiaries/static/img/doughlogo.png', "rb") as img:
+            msg.attach("image.png", "image/png", img.read(), 'inline', headers=[('Content-ID', '<myimage>')])
 
         try:
             mail.send(msg)
