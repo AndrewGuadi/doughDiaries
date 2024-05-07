@@ -1,0 +1,24 @@
+<!-- templates/email_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        .button { background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='img/doughlogo.png')}}" alt="Dough Diaries Logo">
+        <p>Dear {{ first_name }},</p>
+        <p>Welcome to Dough Diaries, your ultimate finance management solution! We're thrilled to have you join our community dedicated to helping you achieve your financial goals and manage your finances with ease.</p>
+        <p>To get started on your journey to financial empowerment, all you need to do is activate your Dough Diaries account by clicking the button below:</p>
+        <a href="{{ activation_link }}" class="button">Activate my account</a>
+        <p>Once your account is activated, you'll gain access to a suite of powerful tools designed to streamline your financial management process. From tracking expenses to setting budgets and monitoring investments, Dough Diaries is here to simplify your financial life.</p>
+        <p>If you have any questions or need assistance at any point, don't hesitate to reach out to our friendly support team at support@doughdiaries.com.</p>
+        <p>Thank you for choosing Dough Diaries to be your financial companion. Let's embark on this journey together and take control of your finances!</p>
+        <p>Best regards,<br>The Dough Diaries Team</p>
+    </div>
+</body>
+</html>
