@@ -59,7 +59,7 @@
         </div>
         <div class="profile-info">
             <label>Joined:</label>
-            <p>{{ user.date_joined.strftime('%B %d, %Y') }}</p>
+            <p>{{ user.date_joined.strftime('%B %Y') }}</p>
         </div>
         <a  id="logout" href="{{ url_for('logout') }}"><p>Logout</p></a>
         <a href="#" class="btn btn-primary">Edit Profile</a> 
