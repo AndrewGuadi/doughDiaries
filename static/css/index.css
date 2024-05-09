@@ -34,10 +34,14 @@ row{
 }
 
 .withdraw{
-    color:rgb(255, 0, 0);
+    align-items: center;
+    background-color: lightgrey;
+    color:black;
 }
 .deposit{
-    color:rgb(0, 255, 0);
+    align-items: center;
+    background: white;
+    color:black;
 }
 .modal-header {
     display: flex;
