@@ -15,6 +15,7 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(30))
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    date_joined = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     balance = db.Column(db.Float, default=0.00)  # Adding the balance column
     password_hash = db.Column(db.String(128))
 
