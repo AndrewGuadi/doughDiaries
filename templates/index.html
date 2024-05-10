@@ -90,7 +90,7 @@
           </div>
           <!-- ategories -->
           <div class="form-group">
-            {{ form.category(class="form-control", id="category") }}
+            {{ form.category(class="form-control category-select", id="category") }}
             <input type="text" class="form-control mt-2" id="new_category_input" name="new_category" placeholder="Type your new category" style="display:none;">
           </div>
           {{ form.submit(class="btn btn-success") }}
@@ -150,7 +150,7 @@
 
          <!-- ategories -->
          <div class="form-group">
-          {{ form.category(class="form-control", id="category") }}
+          {{ form.category(class="form-control category-select", id="category") }}
           <input type="text" class="form-control mt-2" id="new_category_input" name="new_category" placeholder="Type your new category" style="display:none;">
         </div>
 
@@ -186,45 +186,42 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-  window.onload = function() {
-      setTimeout(function() {
-          var alerts = document.querySelectorAll('.alert');
-          for(var i = 0; i < alerts.length; i++) {
-              alerts[i].style.display = 'none';
-          }
-      }, 5000);
-  }
-
-
-  document.getElementById('category').addEventListener('change', function() {
-      var newCategoryInput = document.getElementById('new_category_input');
-      newCategoryInput.style.display = this.value === 'other' ? 'block' : 'none';
+  document.addEventListener('DOMContentLoaded', function() {
+    var categorySelects = document.querySelectorAll('.category-select');
+    categorySelects.forEach(function(select) {
+      select.addEventListener('change', function() {
+        // Get the corresponding new category input related to this select
+        var newCategoryInput = this.nextElementSibling; // Assuming the input immediately follows the select
+        newCategoryInput.style.display = this.value === 'other' ? 'block' : 'none';
+      });
     });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    // Function to fill the form in the modal with the transaction data
+    // Your existing modal handling script...
     var editModal = $('#editExpenseModal');
     editModal.on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var transactionId = button.data('id'); // Extract info from data-* attributes
-        var transactionDate = button.data('date');
-        var transactionMerchant = button.data('merchant');
-        var transactionAmount = button.data('amount');
-        var transactionCategory = button.data('category');
-        var transactionType = button.data('type');
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var transactionId = button.data('id');
+      var transactionDate = button.data('date');
+      var transactionMerchant = button.data('merchant');
+      var transactionAmount = button.data('amount');
+      var transactionCategory = button.data('category');
+      var transactionType = button.data('type');
 
-        // Update the form action to include the transaction ID
-        var form = editModal.find('form');
-        form.attr('action', '/edit_transaction/' + transactionId);
+      var form = editModal.find('form');
+      form.attr('action', '/edit_transaction/' + transactionId);
 
-        // Update the form fields with the data
-        form.find('[name="date"]').val(transactionDate);
-        form.find('[name="merchant"]').val(transactionMerchant);
-        form.find('[name="amount"]').val(transactionAmount);
-        form.find('[name="category"]').val(transactionCategory).trigger('change'); // for select elements
-        form.find('[name="transaction_type"]').filter('[value="' + transactionType + '"]').prop('checked', true);
+      form.find('[name="date"]').val(transactionDate);
+      form.find('[name="merchant"]').val(transactionMerchant);
+      form.find('[name="amount"]').val(transactionAmount);
+      form.find('[name="category"]').val(transactionCategory).trigger('change');
+      form.find('[name="transaction_type"]').filter('[value="' + transactionType + '"]').prop('checked', true);
     });
-});
+
+    // Hide alerts after 5 seconds
+    setTimeout(function() {
+      $('.alert').fadeOut();
+    }, 5000);
+  });
 </script>
 
 {% endblock %}
