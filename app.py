@@ -67,6 +67,8 @@ def create_app(config_class='config.DevelopmentConfig'):
             'category': transaction.category,
             'transaction_type': transaction.transaction_type
         })
+
+       
         
     @app.route('/register', methods=['GET', 'POST'])
     def register():
@@ -113,6 +115,8 @@ def create_app(config_class='config.DevelopmentConfig'):
         logout_user()
         return redirect(url_for('home'))
 
+
+
     @app.route('/add_expense', methods=['GET', 'POST'])
     def add_expense():
         form = AddExpenseForm()
@@ -147,6 +151,8 @@ def create_app(config_class='config.DevelopmentConfig'):
                 db.session.rollback()
                 flash(f'There was an Error: {e}')
         return redirect(url_for('home'))
+
+
 
     @app.route('/edit_transaction/<int:transaction_id>', methods=['GET', 'POST'])
     @login_required
