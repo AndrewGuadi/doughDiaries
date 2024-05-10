@@ -121,12 +121,14 @@ def create_app(config_class='config.DevelopmentConfig'):
     def add_expense():
         form = AddExpenseForm()
         if form.validate_on_submit():
+            category = form.new_category.data if form.category.data == 'other' else form.category.data
+
             new_transaction = Transaction(
                 transaction_type=form.transaction_type.data,
                 date=form.date.data,
                 merchant=form.merchant.data,
                 amount=form.amount.data,
-                category=form.category.data,
+                category=category,
                 user_id=current_user.id
             )
             try:

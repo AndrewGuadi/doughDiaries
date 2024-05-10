@@ -45,5 +45,5 @@ class Transaction(db.Model):
     date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     merchant = db.Column(db.String(50), nullable=True)
     amount = db.Column(db.Float(), nullable=False)
-    category = db.Column(db.String(30), nullable=False)
+    category = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

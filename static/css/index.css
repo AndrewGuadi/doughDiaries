@@ -74,17 +74,21 @@ row{
 }
 
 .modal-content{
+    background-color: rgb(65, 65, 65);
     margin-top:25vw;
 }
 .modal-body {
+    background-color: rgb(65, 65, 65);
     color:white;
     display: flex;
     justify-content: center;
     flex-direction: column;   /* Aligns children elements vertically */
 }
 #date, #amount, #merchant, #category{
+    background-color: rgb(155, 155, 155);
     border-radius: 50px;
     color: white;
+    border: solid rgb(155, 155, 155) 0px;
     height: 10vw;
 }
 
