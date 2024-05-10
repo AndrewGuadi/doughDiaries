@@ -5,7 +5,7 @@ from forms import AddExpenseForm, LoginForm, CreateUserForm
 from flask_wtf.csrf import CSRFProtect
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 
 def create_app(config_class='config.DevelopmentConfig'):
@@ -24,6 +24,25 @@ def create_app(config_class='config.DevelopmentConfig'):
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+
+    def generate_confirmation_token(email):
+        serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+        return serializer.dumps(email, salt=app.config['SECURITY_PASSWORD_SALT'])
+
+    def confirm_token(token, expiration=3600):
+        serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+        try:
+            email = serializer.loads(
+                token,
+                salt=app.config['SECURITY_PASSWORD_SALT'],
+                max_age=expiration
+            )
+        except SignatureExpired:
+            return False
+        return email
+
+
 
     def send_welcome_email(user):
         
@@ -52,6 +71,35 @@ def create_app(config_class='config.DevelopmentConfig'):
         # Query all transactions for the user
         transactions = Transaction.query.filter_by(user_id=current_user.id).order_by(Transaction.date.desc()).all()
         return transactions
+
+    @app.route('/reset_password', methods=['GET', 'POST'])
+    def reset_password():
+        if request.method == 'POST':
+            email = request.form['email']
+            user = User.query.filter_by(email=email).first_or_404()
+            token = generate_confirmation_token(user.email)
+            reset_url = url_for('reset_with_token', token=token, _external=True)
+            # Send email here with reset_url
+            return 'An email has been sent with instructions to reset your password.'
+        return render_template('reset_password.html')
+
+    @app.route('/reset/<token>', methods=['GET', 'POST'])
+    def reset_with_token(token):
+        try:
+            email = confirm_token(token)
+        except:
+            flash('The reset link is invalid or has expired.', 'danger')
+            return redirect(url_for('reset_password'))
+
+        form = ResetPasswordForm()  # You need to create this form
+        if form.validate_on_submit():
+            user = User.query.filter_by(email=email).first_or_404()
+            user.password_hash = generate_password_hash(form.password.data)
+            db.session.commit()
+            flash('Your password has been updated!', 'success')
+            return redirect(url_for('login'))
+
+        return render_template('reset_with_token.html', form=form, token=token)
 
 
     @app.route('/api/transaction/<int:transaction_id>')
