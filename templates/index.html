@@ -90,7 +90,7 @@
           </div>
           <!-- ategories -->
           <div class="form-group">
-            {{ form.category(class="form-control", id="category_select") }}
+            {{ form.category(class="form-control", id="category") }}
             <input type="text" class="form-control mt-2" id="new_category_input" name="new_category" placeholder="Type your new category" style="display:none;">
           </div>
           {{ form.submit(class="btn btn-success") }}
@@ -150,7 +150,7 @@
 
          <!-- ategories -->
          <div class="form-group">
-          {{ form.category(class="form-control", id="category_select") }}
+          {{ form.category(class="form-control", id="category") }}
           <input type="text" class="form-control mt-2" id="new_category_input" name="new_category" placeholder="Type your new category" style="display:none;">
         </div>
 
@@ -196,7 +196,7 @@
   }
 
 
-  document.getElementById('category_select').addEventListener('change', function() {
+  document.getElementById('category').addEventListener('change', function() {
       var newCategoryInput = document.getElementById('new_category_input');
       newCategoryInput.style.display = this.value === 'other' ? 'block' : 'none';
     });
