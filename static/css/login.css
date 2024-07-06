@@ -39,19 +39,24 @@ form {
     border: none;
 }
 
-a {
+.register-link {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-a:hover {
+.register-link h6:hover {
     color: #28a745;
     text-decoration: underline;
 }
 
 .forgot-password-link {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
+}
+
+.register-link h6:hover {
+    color: #28a745;
+    text-decoration: underline;
 }
 
 img {
