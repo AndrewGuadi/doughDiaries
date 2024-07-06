@@ -27,7 +27,7 @@
         <h1 class="mb-2">Sign in</h1>
         <form method="POST">
             {{ form.hidden_tag() }}
-            <div class="mb-1">
+            <div class="mb-0">
                 {{ form.username.label(class="form-label") }}
                 {{ form.username(class="form-control") }}
                 {% if form.username.errors %}
@@ -38,7 +38,7 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="mb-1">
+            <div class="mb-0">
                 {{ form.password.label(class="form-label") }}
                 {{ form.password(class="form-control") }}
                 {% if form.password.errors %}
