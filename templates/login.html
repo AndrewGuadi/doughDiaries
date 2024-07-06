@@ -7,6 +7,7 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<!-- Displaying flash messages to user -->
     <div id="alert-container">
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
@@ -21,7 +22,7 @@
             {% endif %}
         {% endwith %}
     </div>
-
+<!-- Log in form -->
     <div class="container">
         <img class='mt-0' src="{{ url_for('static', filename=('img/doughlogo.png')) }}" alt="Dough Diaries Logo">
         <img src="{{ url_for('static', filename=('img/moneySigns.png')) }}" alt="Money Signs">
