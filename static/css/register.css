@@ -13,3 +13,12 @@ form{
     top: 20px;
     right: 20px;
     }
+
+btn {
+    background-color: white;
+    color: black;
+    width: 100%;
+    text-align: center;
+    display: block;
+
+    }
