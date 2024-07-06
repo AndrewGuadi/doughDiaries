@@ -55,7 +55,7 @@ form {
 }
 
 .register-link h6:hover {
-    color: #28a745;
+    color: inherit;
     text-decoration: underline;
 }
 
