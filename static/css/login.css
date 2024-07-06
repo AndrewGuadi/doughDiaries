@@ -32,6 +32,13 @@ form {
 .btn {
     padding: 10px 20px; /* Larger padding for button */
 }
+
+.btn-primary {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
 img {
     display: block;
     margin-left: auto;
