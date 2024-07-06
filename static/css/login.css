@@ -1,0 +1,47 @@
+
+body {
+    background-color: black;
+    color: white;
+}
+form {
+    color: black;
+}
+#alert-container {
+    position: relative;
+    min-height: 50px;  /* Ensures container has space for the alert */
+}
+.alert {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    transition: opacity 1s ease-out;
+    opacity: 1;
+    z-index: 1050; /* High z-index to ensure it appears on top of other content */
+}
+.container {
+    padding-top: 50px;
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width */
+    margin: auto; /* Centering */
+}
+.form-control, .btn {
+    margin-bottom: 10px;
+    height: 50px; /* Larger form controls and buttons for better mobile accessibility */
+}
+.btn {
+    padding: 10px 20px; /* Larger padding for button */
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; /* Adjust width as needed */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .container {
+        max-width: 500px; /* Slightly larger container for tablets and desktops */
+    }
+}
