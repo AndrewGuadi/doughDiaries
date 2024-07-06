@@ -30,7 +30,9 @@ form {
     height: 50px; /* Larger form controls and buttons for better mobile accessibility */
 }
 .btn {
-    padding: 10px 20px; /* Larger padding for button */
+    width: 100%; /* Make the button full width */
+    text-align: center; /* Center the text within the button */
+    display: block; /* Ensure the button is treated as a block element */
 }
 
 .btn-primary {
