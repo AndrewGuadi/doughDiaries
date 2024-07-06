@@ -49,6 +49,11 @@ a:hover {
     text-decoration: underline;
 }
 
+.forgot-password-link {
+    color: white;
+    text-decoration: none;
+}
+
 img {
     display: block;
     margin-left: auto;
