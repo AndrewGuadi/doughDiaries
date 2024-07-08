@@ -10,6 +10,8 @@
 <body>
     <a href="{{ url_for('login') }}" class="btn btn-secondary back-to-login">Back to Login</a>
     <div class="container">
+        <img class='mt-0' src="{{ url_for('static', filename=('img/doughlogo.png')) }}" alt="Dough Diaries Logo">
+        <img src="{{ url_for('static', filename=('img/moneySigns.png')) }}" alt="Money Signs">
         <div class="col-md-8 offset-md-2">
             <h2>Create an account</h2>
             <form method="POST" action="">
