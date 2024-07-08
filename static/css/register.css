@@ -22,3 +22,17 @@ btn {
     display: block;
 
     }
+
+img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%; /* Adjust width as needed */
+    }
+    
+/* Responsive adjustments */
+@media (min-width: 768px) {
+        .container {
+            max-width: 500px; /* Slightly larger container for tablets and desktops */
+        }
+    }
