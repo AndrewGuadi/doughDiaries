@@ -15,19 +15,19 @@ form {
     right: 20px;
     }
 
-btn {
-    background-color: white;
-    color: black;
-    width: 100%;
-    text-align: center;
-    display: block;
-
-    }
-
 .form-control, .btn {
         margin-bottom: 10px;
         height: 50px; /* Larger form controls and buttons for better mobile accessibility */
     }
+
+btn {
+        background-color: white;
+        color: black;
+        width: 100%;
+        text-align: center;
+        display: block;
+    
+        }
 
 .btn {
         width: 100%; /* Make the button full width */
