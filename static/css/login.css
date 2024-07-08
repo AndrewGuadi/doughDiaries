@@ -49,32 +49,22 @@ form {
 }
 
 .register-link {
-    color: inherit;
+    color: white;
     text-decoration: none;
 }
 
 .register-link:hover {
-    color: #28a745;
+    color: white;
     text-decoration: underline;
 }
 
 .forgot-password-link {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .forgot-password-link:hover {
-    color: #28a745;
-    text-decoration: underline;
-}
-
-.register-link:hover {
-    color: inherit;
-    text-decoration: underline;
-}
-
-.h6:hover:hover {
-    color: #28a745;
+    color: white;
     text-decoration: underline;
 }
 
