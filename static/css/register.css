@@ -9,9 +9,14 @@ form {
 }
 
 .back-to-login {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    text-align:center;
+    color: white;
+}
+
+.back-to-login:hover {
+    text-align:center;
+    color: #28a745;
+    text-decoration: underline;
 }
 
 .form-group {
