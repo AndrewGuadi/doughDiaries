@@ -86,7 +86,6 @@ row{
 }
 #new_category_input, #date, #amount, #merchant, #category{
     background-color: rgb(155, 155, 155);
-    border-radius: 50px;
     color: white;
     border: solid rgb(155, 155, 155) 0px;
     height: 10vw;
