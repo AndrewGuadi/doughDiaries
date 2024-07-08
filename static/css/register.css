@@ -15,18 +15,20 @@ form {
 }
 
 .form-group {
-    margin-bottom: 5px; /* Reduced margin between form groups */
+    margin-bottom: 15px; /* Standardized margin between form groups */
 }
 
 .form-control, .btn {
-    margin-bottom: 5px; /* Reduced margin between form fields and buttons */
-    height: 40px; /* Adjusted height for better spacing */
+    margin-bottom: 10px; /* Standardized margin between form controls and buttons */
+    height: auto; /* Let the browser decide the appropriate height */
+    padding: 10px; /* Add padding for better spacing */
 }
 
 .btn {
     width: 100%; 
     text-align: center; 
     display: block; 
+    padding: 10px 0; /* Ensure buttons have sufficient padding */
 }
 
 .btn-primary {
