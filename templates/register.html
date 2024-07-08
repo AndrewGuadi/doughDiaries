@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
 </head>
 <body>
-    <a href="{{ url_for('login') }}" class="btn btn-secondary back-to-login">Back to Login</a>
+    <!-- <a href="{{ url_for('login') }}" class="btn btn-secondary back-to-login">Back to Login</a> -->
     <div class="container mt-5">
         <img class="mb-4" src="{{ url_for('static', filename=('img/doughlogo.png')) }}" alt="Dough Diaries Logo">
         <img class="mb-4" src="{{ url_for('static', filename=('img/moneySigns.png')) }}" alt="Money Signs">
@@ -64,5 +64,6 @@
             </form>
         </div>
     </div>
+    <a href="{{ url_for('login') }}" class="text-center back-to-login-link"><h6>Back to login</h6></a>
 </body>
 </html>
