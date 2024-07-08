@@ -1,63 +1,55 @@
-
-body{
-    padding-top:5vw;
-    background-color:black;
-    color:white;
-    }
+body {
+    padding-top: 5vw;
+    background-color: black;
+    color: white;
+}
 
 form {
-    color:black;
-    }
+    color: black;
+}
 
 .back-to-login {
     position: absolute;
     top: 20px;
     right: 20px;
-    }
+}
+
+.form-group {
+    margin-bottom: 5px; /* Reduced margin between form groups */
+}
 
 .form-control, .btn {
-        margin-bottom: 10px;
-        height: 50px; /* Larger form controls and buttons for better mobile accessibility */
-    }
-
-btn {
-        background-color: white;
-        color: black;
-        width: 100%;
-        text-align: center;
-        display: block;
-    
-        }
+    margin-bottom: 5px; /* Reduced margin between form fields and buttons */
+    height: 40px; /* Adjusted height for better spacing */
+}
 
 .btn {
-        width: 100%; /* Make the button full width */
-        text-align: center; /* Center the text within the button */
-        display: block; /* Ensure the button is treated as a block element */
-    }
-    
+    width: 100%; 
+    text-align: center; 
+    display: block; 
+}
+
 .btn-primary {
-        background-color: white;
-        color: black;
-        border: none;
-    
-    }
+    background-color: white;
+    color: black;
+    border: none;
+}
 
 .btn-primary:hover {
-        background-color: #28a745;
-        color: white;
-        border: none;
-    }
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
 
 img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%; /* Adjust width as needed */
-    }
-    
-/* Responsive adjustments */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 @media (min-width: 768px) {
-        .container {
-            max-width: 500px; /* Slightly larger container for tablets and desktops */
-        }
+    .container {
+        max-width: 500px;
     }
+}
