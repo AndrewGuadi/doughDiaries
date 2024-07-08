@@ -68,6 +68,11 @@ form {
     text-decoration: underline;
 }
 
+.h6:hover:hover {
+    color: #28a745;
+    text-decoration: underline;
+}
+
 img {
     display: block;
     margin-left: auto;
