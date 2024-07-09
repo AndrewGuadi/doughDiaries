@@ -48,7 +48,7 @@
             <img src="{{ url_for('static', filename='img/withdraw.png') }}" alt="Withdraw Icon" style="width: 24px; height: 24px;">
           {% endif %}
         </div>
-        <div class="col-3">{{ tran.date.strftime('%B %d, %Y') }}</div>
+        <div class="col-2">{{ tran.date.strftime('%B %d, %Y') }}</div>
         <div class="col-2">{{ tran.merchant }}</div>
         <div class="col-3">{{ tran.category }}</div>
         <div class="col-2">{{ "%.2f"|format(tran.amount) }}</div>
