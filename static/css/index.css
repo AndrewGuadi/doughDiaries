@@ -145,3 +145,7 @@ select, input::placeholder {
 .container-fluid{
     margin-bottom:25vw;
 }
+
+.custom-button-font-color {
+    color: rgba(0, 0, 0, 0.1);
+}
