@@ -35,13 +35,11 @@ row{
 
 .withdraw{
     align-items: center;
-    background-color: lightgrey;
-    color:black;
+    color:white;
 }
 .deposit{
     align-items: center;
-    background: white;
-    color:black;
+    color: white;
 }
 .modal-header {
     display: flex;
