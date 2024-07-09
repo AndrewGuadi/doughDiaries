@@ -41,6 +41,7 @@
     <p class="col-12">Recent Transactions</p>
     {% for tran in trans %}
       <div class="row trans-col w-100 justify-content-center {{ tran.transaction_type }}">
+
         <div class="col-3">{{ tran.date.strftime('%B %d, %Y') }}</div>
         <div class="col-2">{{ tran.merchant }}</div>
         <div class="col-3">{{ tran.category }}</div>
