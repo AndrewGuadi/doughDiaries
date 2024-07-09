@@ -43,9 +43,9 @@
       <div class="row trans-col w-100 justify-content-center {{ tran.transaction_type }}">
         <div class="col-1">
           {% if tran.transaction_type == 'deposit' %}
-            <img src="{{ url_for('static', filename='images/deposit.png') }}" alt="Deposit Icon" style="width: 24px; height: 24px;">
+            <img src="{{ url_for('static', filename='img/deposit.png') }}" alt="Deposit Icon" style="width: 24px; height: 24px;">
           {% elif tran.transaction_type == 'withdraw' %}
-            <img src="{{ url_for('static', filename='images/withdraw.png') }}" alt="Withdraw Icon" style="width: 24px; height: 24px;">
+            <img src="{{ url_for('static', filename='img/withdraw.png') }}" alt="Withdraw Icon" style="width: 24px; height: 24px;">
           {% endif %}
         </div>
         <div class="col-3">{{ tran.date.strftime('%B %d, %Y') }}</div>
