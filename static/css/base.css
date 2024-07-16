@@ -42,7 +42,6 @@ body{
 .nav-item img {
     height: 10vw; /* Adjust size as needed */
     width: auto;
-    filter: invert(100%); /* Makes the icons white */
 }
 
 /* Ensuring the mobile footer is only displayed on small screens */
