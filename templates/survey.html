@@ -1,58 +1,198 @@
-{% extends 'base.html' %}
-
-
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}">
-{% endblock %}
-
-{% block title %}User Survey{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Management App Survey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
     <div class="survey-container">
         <form id="surveyForm">
-            <div id="step1" class="step">
-                <h2>Step 1: Age Range</h2>
-                <button type="button" class="age-btn" onclick="selectAgeRange('18-25')">18-25</button>
-                <button type="button" class="age-btn" onclick="selectAgeRange('25-34')">25-34</button>
-                <button type="button" class="age-btn" onclick="selectAgeRange('34-45')">34-45</button>
+            <!-- Step 1: Demographic Information -->
+            <div id="step1" class="step active">
+                <h2>Demographic Information</h2>
+                <label for="age">What is your age?</label>
+                <input type="number" id="age" name="age" min="18" max="100" required>
+
+                <label for="occupation">What is your occupation?</label>
+                <input type="text" id="occupation" name="occupation" required>
+
+                <label for="annualIncome">What is your annual income? (USD)</label>
+                <input type="number" id="annualIncome" name="annualIncome" min="0" required>
             </div>
-            <!-- Add more steps as needed -->
+
+            <!-- Step 2: Current Financial Habits -->
             <div id="step2" class="step">
-                <h2>Step 2: Additional Questions</h2>
-                <label for="additionalQuestion">Additional Question:</label>
-                <input type="text" id="additionalQuestion" name="additionalQuestion">
+                <h2>Current Financial Habits</h2>
+                <label for="financeManagement">How do you currently manage your finances?</label>
+                <input type="text" id="financeManagement" name="financeManagement" required>
+
+                <label for="expenseTracking">How often do you track your expenses?</label>
+                <select id="expenseTracking" name="expenseTracking" required>
+                    <option value="">Select frequency...</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="rarely">Rarely</option>
+                    <option value="never">Never</option>
+                </select>
+
+                <label for="challengingTasks">What financial tasks do you find most challenging?</label>
+                <input type="text" id="challengingTasks" name="challengingTasks" required>
             </div>
+
+            <!-- Step 3: App Feature Preferences -->
             <div id="step3" class="step">
-                <h2>Step 3: Final Step</h2>
-                <label for="finalQuestion">Final Question:</label>
-                <input type="text" id="finalQuestion" name="finalQuestion">
+                <h2>App Feature Preferences</h2>
+                <p>Which features would you find most useful in a finance management app? (Select all that apply)</p>
+                <label><input type="checkbox" name="features" value="budgeting"> Budgeting tools</label><br>
+                <label><input type="checkbox" name="features" value="expenseTracking"> Expense tracking</label><br>
+                <label><input type="checkbox" name="features" value="billReminders"> Bill reminders</label><br>
+                <label><input type="checkbox" name="features" value="savingsGoals"> Savings goals</label><br>
+                <label><input type="checkbox" name="features" value="investmentTracking"> Investment tracking</label><br>
+                <label><input type="checkbox" name="features" value="debtManagement"> Debt management</label><br>
+
+                <label for="featureImportance">How important are the following features to you? (Rate on a scale of 1-5)</label><br>
+                <label>User-friendly interface: <input type="number" id="feature1" name="feature1" min="1" max="5" required></label><br>
+                <label>Security and privacy: <input type="number" id="feature2" name="feature2" min="1" max="5" required></label><br>
+                <label>Integration with bank accounts: <input type="number" id="feature3" name="feature3" min="1" max="5" required></label><br>
+                <label>Customizable reports: <input type="number" id="feature4" name="feature4" min="1" max="5" required></label><br>
+                <label>Alerts and notifications: <input type="number" id="feature5" name="feature5" min="1" max="5" required></label><br>
             </div>
-            <button type="button" onclick="prevStep()">Previous</button>
-            <button type="button" onclick="nextStep()">Next</button>
+
+            <!-- Step 4: Security and Privacy Concerns -->
+            <div id="step4" class="step">
+                <h2>Security and Privacy Concerns</h2>
+                <label for="concernLevel">How concerned are you about the security and privacy of your financial data?</label>
+                <select id="concernLevel" name="concernLevel" required>
+                    <option value="">Select your level of concern...</option>
+                    <option value="notConcerned">Not concerned</option>
+                    <option value="slightlyConcerned">Slightly concerned</option>
+                    <option value="moderatelyConcerned">Moderately concerned</option>
+                    <option value="veryConcerned">Very concerned</option>
+                </select>
+
+                <label for="importantSecurityFeatures">What security features are most important to you? (Select all that apply)</label><br>
+                <label><input type="checkbox" name="securityFeatures" value="twoFactor"> Two-factor authentication</label><br>
+                <label><input type="checkbox" name="securityFeatures" value="dataEncryption"> Data encryption</label><br>
+                <label><input type="checkbox" name="securityFeatures" value="regularUpdates"> Regular security updates</label><br>
+                <label><input type="checkbox" name="securityFeatures" value="secureLogin"> Secure login</label><br>
+            </div>
+
+            <!-- Step 5: User Experience -->
+            <div id="step5" class="step">
+                <h2>User Experience</h2>
+                <label for="likelihoodUse">How likely are you to use a finance management app if it meets your needs?</label>
+                <select id="likelihoodUse" name="likelihoodUse" required>
+                    <option value="">Select your likelihood...</option>
+                    <option value="notLikely">Not likely</option>
+                    <option value="somewhatLikely">Somewhat likely</option>
+                    <option value="veryLikely">Very likely</option>
+                    <option value="definitely">Definitely</option>
+                </select>
+
+                <label for="preferredPlatform">What is your preferred platform for using finance management tools?</label><br>
+                <label><input type="radio" name="preferredPlatform" value="mobileApp"> Mobile app</label><br>
+                <label><input type="radio" name="preferredPlatform" value="webApp"> Web app</label><br>
+                <label><input type="radio" name="preferredPlatform" value="both"> Both</label><br>
+            </div>
+
+            <!-- Step 6: Pricing and Monetization -->
+            <div id="step6" class="step">
+                <h2>Pricing and Monetization</h2>
+                <label for="payForApp">Would you be willing to pay for a finance management app if it met your needs?</label>
+                <select id="payForApp" name="payForApp" required>
+                    <option value="">Select your preference...</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <div id="priceRange" style="display: none;">
+                    <label for="monthlyPrice">If yes, how much would you be willing to pay per month?</label>
+                    <select id="monthlyPrice" name="monthlyPrice">
+                        <option value="$1-5">$1-5</option>
+                        <option value="$6-10">$6-10</option>
+                        <option value="$11-15">$11-15</option>
+                    </select>
+
+                    <label for="monetizationModel">Would you prefer a one-time purchase, a subscription model, or a freemium model?</label>
+                    <select id="monetizationModel" name="monetizationModel">
+                        <option value="oneTimePurchase">One-time purchase</option>
+                        <option value="subscription">Subscription model</option>
+                        <option value="freemium">Freemium model (free with optional paid features)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Step 7: Additional Feedback -->
+            <div id="step7" class="step">
+                <h2>Additional Feedback</h2>
+                <label for="additionalFeedback">What other features or improvements would you like to see in a finance management app?</label>
+                <textarea id="additionalFeedback" name="additionalFeedback"></textarea>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="step-buttons">
+                <button type="button" onclick="prevStep()">Previous</button>
+                <button type="button" onclick="nextStep()">Next</button>
+                <button type="submit" id="submitBtn">Submit</button>
+            </div>
         </form>
     </div>
 
-{% endblock %}
-
-{% block scripts %}
     <script>
-        let currentStep = 1;
+    let currentStep = 1;
 
-        function nextStep() {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            currentStep++;
-            document.getElementById(`step${currentStep}`).classList.add('active');
+    function nextStep() {
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        currentStep++;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+
+        // Show or hide submit button based on current step
+        if (currentStep === 7) {
+            document.getElementById('submitBtn').style.display = 'block';
+        } else {
+            document.getElementById('submitBtn').style.display = 'none';
+        }
+    }
+
+    function prevStep() {
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        currentStep--;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+
+        // Show or hide submit button based on current step
+        if (currentStep === 7) {
+            document.getElementById('submitBtn').style.display = 'block';
+        } else {
+            document.getElementById('submitBtn').style.display = 'none';
+        }
+    }
+
+    document.getElementById('surveyForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission for demo purposes
+
+        // Here you can collect and process the form data
+        let formData = new FormData(this);
+        for (let entry of formData.entries()) {
+            console.log(entry[0] + ': ' + entry[1]);
         }
 
-        function prevStep() {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            currentStep--;
-            document.getElementById(`step${currentStep}`).classList.add('active');
-        }
+        // Example: You could send this data to a server using fetch or XMLHttpRequest
+        // fetch('submit_survey.php', {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log('Success:', data);
+        // })
+        // .catch((error) => {
+        //     console.error('Error:', error);
+        // });
+    });
 
-        function selectAgeRange(ageRange) {
-            console.log(`Selected age range: ${ageRange}`);
-}
-    
     </script>
-{% endblock %}
+</body>
+</html>
