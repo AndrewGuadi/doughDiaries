@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survey Form</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}">
+{% endblock %}
+
+{% block title %}User Survey{% endblock %}
+
+{% block content %}
     <div class="survey-container">
         <form id="surveyForm">
             <div id="step1" class="step">
@@ -31,6 +32,9 @@
         </form>
     </div>
 
+{% endblock %}
+
+{% block scripts %}
     <script>
         let currentStep = 1;
 
@@ -51,5 +55,4 @@
 }
     
     </script>
-</body>
-</html>
+{% endblock %}
