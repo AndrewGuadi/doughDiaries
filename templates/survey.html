@@ -52,9 +52,15 @@
             resize: vertical;
         }
 
-        .btn-group-vertical .btn {
-            margin-bottom: 10px;
+        .btn-group {
+            margin-top: 30px;
         }
+
+        .btn-group-horizontal {
+            display: flex;
+            justify-content: center;
+        }
+
         .age-group-btn {
             border-radius: 30px;
             padding: 10px 20px;
@@ -64,9 +70,6 @@
         }
         .age-group-btn:hover {
             background-color: #f25656;
-        }
-        .btn-group {
-            margin-top: 30px;
         }
         
     </style>
@@ -109,7 +112,7 @@
             <div class="carousel-item">
                 <div class="container text-center">
                     <h2>CHOOSE YOUR AGE GROUP</h2>
-                    <div class="btn-group-vertical">
+                    <div class="btn-group btn-group-horizontal">
                         <button type="button" class="btn age-group-btn" onclick="nextStep()">18-35</button>
                         <button type="button" class="btn age-group-btn" onclick="nextStep()">36-45</button>
                         <button type="button" class="btn age-group-btn" onclick="nextStep()">46-55</button>
