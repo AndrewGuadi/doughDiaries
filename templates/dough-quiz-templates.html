@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+</head>
+<body>
+    <div class="survey-container">
+        <form id="surveyForm">
+            <div id="step1" class="step">
+                <h2>Step 1: Age Range</h2>
+                <button type="button" class="age-btn" onclick="selectAgeRange('18-25')">18-25</button>
+                <button type="button" class="age-btn" onclick="selectAgeRange('25-34')">25-34</button>
+                <button type="button" class="age-btn" onclick="selectAgeRange('34-45')">34-45</button>
+            </div>
+            <!-- Add more steps as needed -->
+            <div id="step2" class="step">
+                <h2>Step 2: Additional Questions</h2>
+                <label for="additionalQuestion">Additional Question:</label>
+                <input type="text" id="additionalQuestion" name="additionalQuestion">
+            </div>
+            <div id="step3" class="step">
+                <h2>Step 3: Final Step</h2>
+                <label for="finalQuestion">Final Question:</label>
+                <input type="text" id="finalQuestion" name="finalQuestion">
+            </div>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </form>
+    </div>
+
+    <script>
+        let currentStep = 1;
+
+        function nextStep() {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep++;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+
+        function prevStep() {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep--;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+
+        function selectAgeRange(ageRange) {
+            console.log(`Selected age range: ${ageRange}`);
+}
+    
+    </script>
+</body>
+</html>
