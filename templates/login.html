@@ -22,7 +22,6 @@
     <div class="container">
         <img class='mt-0' src="{{ url_for('static', filename='img/doughlogo.png') }}" alt="Dough Diaries Logo">
         <img src="{{ url_for('static', filename='img/moneySigns.png') }}" alt="Money Signs">
-        <div class="form-container">
         <h1 class="mb-2">Sign in</h1>
         <form method="POST">
             {{ form.hidden_tag() }}
@@ -52,7 +51,6 @@
                 {{ form.submit(class="btn btn-primary") }}
             </div>
         </form>
-    </div>
     </div>
     <a href="register" class="text-center register-link"><h6>Create Account</h6></a>
     <a href="/reset_password" class="text-center forgot-password-link"><h6>Forgot Password?</h6></a>
