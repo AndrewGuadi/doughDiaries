@@ -8,7 +8,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="container-fluid col-11">
+<div class="container-fluid col-11 top-container-fluid">
   <div class="row mb-4">
     {% if user.username %}
     <h1 class="col-8 my-3">Hi, {{ user.username }}</h1>
@@ -40,18 +40,18 @@
   <div id="recentTransactions" class="row justify-content-center mb-5">
     <p class="col-12">RECENTS</p>
     {% for tran in trans %}
-      <div class="row trans-col w-100 justify-content-center {{ tran.transaction_type }}">
-        <div class="col-1">
+      <div class="row trans-col w-100 justify-content-center {{ tran.transaction_type }} container-fluid" >
+        <div class="col-1 justify-content-center d-flex">
           {% if tran.transaction_type == 'deposit' %}
-            <img src="{{ url_for('static', filename='img/deposit.png') }}" alt="Deposit Icon" style="width: 24px; height: 24px;">
+            <img class='transaction-img' src="{{ url_for('static', filename='img/deposit.png') }}" alt="Deposit Icon">
           {% elif tran.transaction_type == 'withdraw' %}
-            <img src="{{ url_for('static', filename='img/withdraw.png') }}" alt="Withdraw Icon" style="width: 24px; height: 24px;">
+            <img class='transaction-img'  src="{{ url_for('static', filename='img/withdraw.png') }}" alt="Withdraw Icon">
           {% endif %}
         </div>
-        <div class="col-2">{{ tran.date.strftime('%m/%d/%y') }}</div>
-        <div class="col-2">{{ tran.merchant }}</div>
-        <div class="col-3">{{ tran.category }}</div>
-        <div class="col-2">{{ "%.2f"|format(tran.amount) }}</div>
+        <div class="col-3">{{ tran.date.strftime('%m/%d/%y') }}</div>
+        <div class="col-3">{{ tran.merchant }}</div>
+        <!-- <div class="col-3">{{ tran.category }}</div> -->
+        <div class="col-3">{{ "%.2f"|format(tran.amount) }}</div>
         <!-- Trigger/Open The Modal for Editing Transaction -->
         <button class="btn btn-link col-2" data-toggle="modal" data-target="#editExpenseModal" 
                 data-id="{{ tran.id }}" data-date="{{ tran.date.strftime('%Y-%m-%d') }}"
@@ -155,7 +155,7 @@
             <input type="number" step="0.01" name="amount" id="amount" class="form-control" required>
           </div>
 
-         <!-- ategories -->
+         <!-- categories -->
          <div class="form-group">
           {{ form.category(class="form-control category-select", id="category") }}
           <input type="text" class="form-control mt-2" id="new_category_input" name="new_category" placeholder="Type your new category" style="display:none;">

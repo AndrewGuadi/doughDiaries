@@ -22,7 +22,7 @@ row{
 }
 
 .trans-col{
-    font-size: 0.8rem;
+    font-size: 3.1vw;
 }
 
 .balance{
@@ -54,6 +54,9 @@ row{
     margin: 0; /* Removes default margin to aid in centering */
 }
 
+.btn-link{
+    font-size:3.1vw;
+}
 
 .close{
     width:15vw;
@@ -142,6 +145,11 @@ select, input::placeholder {
     display:flex;
 }
 
-.container-fluid{
+.transaction-img{
+    width:4vw;
+    height:4vw;
+}
+
+.top-container-fluid{
     margin-bottom:25vw;
 }
