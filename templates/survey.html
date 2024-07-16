@@ -83,39 +83,10 @@
 <body>
     <div id="surveyCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <!-- Step 1: Demographic Information -->
+            
+            <!-- Demographic - Age -->
+
             <div class="carousel-item active">
-                <div class="container">
-                    <h2>Demographic Information</h2>
-                    <div class="form-group">
-                        <label for="age">What is your age?</label>
-                        <select id="expenseTracking" name="expenseTracking" class="form-control" required>
-                            <option value="">Select your age group</option>
-                            <option value="daily">18-35</option>
-                            <option value="weekly">36-45</option>
-                            <option value="monthly">46-55</option>
-                            <option value="rarely">56+</option>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="occupation">What is your occupation?</label>
-                        <input type="text" id="occupation" name="occupation" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="annualIncome">What is your annual income? (USD)</label>
-                        <input type="number" id="annualIncome" name="annualIncome" class="form-control" min="0" required>
-                    </div>
-
-                    <div class="step-buttons">
-                        <button class="btn btn-primary" onclick="nextStep()">Next</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Test Slide-->
-
-            <div class="carousel-item">
                 <div class="container text-center">
                     <h2>How old are you?</h2>
                     <div class="btn-group btn-group-horizontal">
@@ -123,10 +94,6 @@
                         <button type="button" class="btn age-group-btn" onclick="nextStep()">36-45</button>
                         <button type="button" class="btn age-group-btn" onclick="nextStep()">46-55</button>
                         <button type="button" class="btn age-group-btn" onclick="nextStep()">56+</button>
-                    </div>
-                    <div class="step-buttons">
-                        <button class="btn btn-secondary" onclick="prevStep()">Previous</button>
-                        <button class="btn btn-primary" onclick="nextStep()">Next</button>
                     </div>
                 </div>
             </div>
