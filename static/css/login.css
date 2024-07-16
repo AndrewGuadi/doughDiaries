@@ -5,7 +5,9 @@ body {
 
 form {
     color: black;
+    background-color: white; /* Better contrast for form readability */
     padding: 20px;
+    border-radius: 5px;
 }
 
 #alert-container {
@@ -28,6 +30,19 @@ form {
     width: 100%; /* Full width */
     max-width: 400px; /* Maximum width */
     margin: auto; /* Centering */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .form-control, .btn {
