@@ -294,6 +294,11 @@
     <!-- Custom JavaScript -->
 
     <script>
+        // Initialize the carousel manually without auto sliding
+        $('#surveyCarousel').carousel({
+            interval: false
+        });
+    
         // Function to move to the next carousel slide
         function nextStep() {
             $('#surveyCarousel').carousel('next');
@@ -333,4 +338,5 @@
             //     console.error('Error:', error);
             // });
         });
-    </script>    
+    </script>
+        
