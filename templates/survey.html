@@ -299,38 +299,59 @@
             interval: false,
             wrap: false
         });
-
+    
         // Disable sliding by mouse click or swipe
         $('#surveyCarousel').on('slide.bs.carousel', function (e) {
             if (!e.relatedTarget) return false;
         });
-
-        // Function to move to the next carousel slide
+    
+        // Function to move to the next carousel slide with validation
         function nextStep() {
-            $('#surveyCarousel').carousel('next');
+            // Get the current active carousel item
+            const activeItem = document.querySelector('.carousel-item.active');
+            
+            // Check if all required fields are filled out
+            const requiredFields = activeItem.querySelectorAll('[required]');
+            let allFieldsFilled = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    allFieldsFilled = false;
+                    field.classList.add('is-invalid');
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+    
+            // If all required fields are filled, move to the next step
+            if (allFieldsFilled) {
+                $('#surveyCarousel').carousel('next');
+            } else {
+                alert('Please fill out all required fields.');
+            }
         }
-
+    
         // Function to move to the previous carousel slide
         function prevStep() {
             $('#surveyCarousel').carousel('prev');
         }
-
+    
         // Function to handle form submission (for demonstration purposes)
         document.getElementById('surveyForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent actual form submission for demo
-
+    
             // Collect form data using FormData
             let formData = new FormData(this);
             let formDataObject = {};
-
+    
             // Convert FormData to a plain object
             formData.forEach(function(value, key) {
                 formDataObject[key] = value;
             });
-
+    
             // Log the form data (you can process or send it to server here)
             console.log('Form Data:', formDataObject);
-
+    
             // Example: Send data to server using fetch API
             // fetch('submit_survey.php', {
             //     method: 'POST',
@@ -345,3 +366,4 @@
             // });
         });
     </script>
+    
