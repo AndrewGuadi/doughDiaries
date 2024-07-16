@@ -301,7 +301,7 @@ def create_app(config_class='config.DevelopmentConfig'):
     #route for survey
     @app.route('/survey')
     def survey():
-        return render_template('dough-quiz-templates.html')
+        return render_template('survey.html')
 
 
     #functional routes
