@@ -298,12 +298,6 @@ def create_app(config_class='config.DevelopmentConfig'):
         user = current_user
         return render_template('profile.html', user=user)
 
-    #route for survey
-    @app.route('/survey')
-    def survey():
-        return render_template('survey.html')
-
-
     #functional routes
     # @app.route('/add_transaction')
     # def add_transaction()
