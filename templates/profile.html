@@ -25,7 +25,7 @@
             <p>{{ user.date_joined.strftime('%B %Y') }}</p>
         </div>
         <a href="#" class="btn btn-primary">Edit profile</a> 
-        <a id="logout" class="text-center" href="{{ url_for('logout') }}"><p>Logout</p></a>
+        <a id="logout" class="text-center" href="{{ url_for('logout') }}"><p id="logout-link">Logout</p></a>
     </div>
 
 {% endblock %}

@@ -33,6 +33,10 @@ body{
     padding-top: 10px;
 }
 
+#logout-link{
+   padding-top: 10px;
+}
+
 a {
     color: white;
 }
