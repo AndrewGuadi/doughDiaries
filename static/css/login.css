@@ -27,7 +27,13 @@ form {
 .form-control, .btn {
     margin-bottom: 10px;
     height: 50px; /* Larger form controls and buttons for better mobile accessibility */
+    
 }
+
+.form-label {
+    display: none;
+}
+
 .btn {
     width: 100%; /* Make the button full width */
     text-align: center; /* Center the text within the button */
