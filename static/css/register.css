@@ -20,13 +20,18 @@ form {
 }
 
 .form-group {
-    margin-bottom: 15px; /* Standardized margin between form groups */
-}
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+} 
+
+.form-control-label {
+    display: none;
+} 
 
 .form-control, .btn {
-    margin-bottom: 10px; /* Standardized margin between form controls and buttons */
+    margin-bottom: 5px; /* Standardized margin between form controls and buttons */
     height: auto; /* Let the browser decide the appropriate height */
-    padding: 10px; /* Add padding for better spacing */
+    padding: 5px; /* Add padding for better spacing */
 }
 
 .btn {
