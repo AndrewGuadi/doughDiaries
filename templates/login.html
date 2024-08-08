@@ -22,7 +22,7 @@
     <div class="container">
         <img id="logo" class='mt-0' src="{{ url_for('static', filename='img/doughlogo.png') }}" alt="Dough Diaries Logo">
         <!-- <img id="moneySigns" src="{{ url_for('static', filename='img/moneySigns.png') }}" alt="Money Signs"> -->
-        <h1 class="mb-2">Sign in</h1>
+        <h1 class="mb-2">Welcome back! Glad <br>to see you, Again!</h1>
         <form method="POST">
             {{ form.hidden_tag() }}
             <div>
@@ -47,13 +47,14 @@
                     </div>
                 {% endif %}
             </div>
+            <a href="/reset_password" class="text-right forgot-password-link"><h6 id="forgotPassword">Forgot Password?</h6></a>
             <div>
                 {{ form.submit(class="btn btn-primary") }}
             </div>
         </form>
     </div>
-    <a href="register" class="text-center register-link"><h6>Create Account</h6></a>
-    <a href="/reset_password" class="text-center forgot-password-link"><h6>Forgot Password?</h6></a>
+    <h6 id="registerNow" class="text-center">Don't have an account? <a href="register" class="text-center register-link">Register Now</h6></a>
+    <!-- <a href="/reset_password" class="text-center forgot-password-link"><h6>Forgot Password?</h6></a> -->
 {% endblock %}
 
 {% block scripts %}

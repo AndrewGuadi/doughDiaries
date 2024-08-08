@@ -2,9 +2,18 @@ body {
     background-color: black;
     color: white;
 }
+
 form {
     color: black;
 }
+
+
+h6 {
+    text-align: right;
+    padding: 5px 0px 5px 0px;
+}
+
+
 #alert-container {
     position: relative;
     min-height: 50px;  /* Ensures container has space for the alert */
@@ -74,6 +83,7 @@ form {
     text-decoration: underline;
 }
 
+
 img {
     display: block;
     margin-left: auto;
@@ -103,7 +113,22 @@ img {
         width: 75%; 
     }
 
+    h1 {
+        text-size: 2.5rem;
+        padding-bottom: 20px;
+    }
+
     #logo img {
+        padding-bottom: 20px;
+    }
+
+    #registerNow {
+        font-size: 0.8rem;
+        padding-top: 10px;
+    }
+
+    #forgotPassword {
+        font-size: 0.8rem;
         padding-bottom: 20px;
     }
 }
@@ -113,12 +138,22 @@ img {
     .container {
         max-width: 500px; 
     }
+
+    h1 {
+        text-size: 4rem;
+        padding-bottom: 5px;
+    }
 }
 
 /* Large Devices */
 @media (min-width: 992px) {
     .container {
         max-width: 700px;
+    }
+
+    h1 {
+        text-size: 4rem;
+        padding-bottom: 5px;
     }
 
     .form-control, .btn {
@@ -142,6 +177,11 @@ img {
 
     img {
         width: 50%; 
+    }
+
+    h1 {
+        text-size: 5rem;
+        padding-bottom: 5px;
     }
 
     #logo img {
