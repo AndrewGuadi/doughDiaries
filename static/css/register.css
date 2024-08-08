@@ -9,36 +9,35 @@ form {
 }
 
 .back-to-login {
-    text-align:center;
+    text-align: center;
     color: white;
 }
 
 .back-to-login:hover {
-    text-align:center;
+    text-align: center;
     color: white;
     text-decoration: underline;
 }
 
 .form-group {
-    /* margin-bottom: 10px; */
     padding-bottom: 5px;
-} 
+}
 
 .form-control-label {
     display: none;
-} 
+}
 
 .form-control, .btn {
-    margin-bottom: 5px; /* Standardized margin between form controls and buttons */
-    height: auto; /* Let the browser decide the appropriate height */
-    padding: 5px; /* Add padding for better spacing */
+    margin-bottom: 5px;
+    height: auto;
+    padding: 5px;
 }
 
 .btn {
-    width: 100%; 
-    text-align: center; 
-    display: block; 
-    padding: 10px 0; /* Ensure buttons have sufficient padding */
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 10px 0;
 }
 
 .btn-primary {
@@ -60,8 +59,53 @@ img {
     width: 50%;
 }
 
-@media (min-width: 768px) {
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    #logo img {
+        width: 60%;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #logo img {
+        width: 50%;
+    }
+
+    .container {
+        max-width: 400px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #logo img {
+        width: 45%;
+    }
+
     .container {
         max-width: 500px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #logo img {
+        width: 40%;
+    }
+
+    .container {
+        max-width: 600px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #logo img {
+        width: 35%;
+    }
+
+    .container {
+        max-width: 700px;
     }
 }

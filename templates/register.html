@@ -10,10 +10,10 @@
 <body>
     <!-- <a href="{{ url_for('login') }}" class="btn btn-secondary back-to-login">Back to Login</a> -->
     <div class="container mt-5">
-        <img class="mb-4" src="{{ url_for('static', filename=('img/doughlogo.png')) }}" alt="Dough Diaries Logo">
-        <img class="mb-4" src="{{ url_for('static', filename=('img/moneySigns.png')) }}" alt="Money Signs">
+        <img id="logo" class="mb-4" src="{{ url_for('static', filename=('img/doughlogo.png')) }}" alt="Dough Diaries Logo">
+        <!-- <img class="mb-4" src="{{ url_for('static', filename=('img/moneySigns.png')) }}" alt="Money Signs"> -->
         <div class="col-md-8 offset-md-2">
-            <h2 class="mb-4">Create an account</h2>
+            <h1 class="mb-4">Create an account</h1>
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
                 <div class="form-group">
