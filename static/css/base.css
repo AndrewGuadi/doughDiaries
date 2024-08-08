@@ -1,27 +1,23 @@
-
-html{
-    width:100vw;
+html {
+    width: 100vw;
 }
-body{
+
+body {
     overflow-y: scroll;
     background: black;
 }
 
-/* header{
-    border-bottom: 2px solid white;
-} */
-
-.logo{
+.logo {
     background: url('../img/doughlogo.png');
     background-size: cover;
-    background-position:center;
-    height:15vw;
-    width:40vw;
-    position:relative;
-    margin:10vw auto 5vw auto;
+    background-position: center;
+    height: 15vw;
+    width: 40vw;
+    position: relative;
+    margin: 10vw auto 5vw auto;
 }
 
-
+/* Mobile Footer */
 .mobile-footer {
     background-color: #333; /* dark background */
     position: fixed;
@@ -48,5 +44,43 @@ body{
 @media (min-width: 769px) {
     .mobile-footer {
         display: none;
+    }
+}
+
+/* Media Queries for .logo img */
+
+/* Small devices (up to 576px) */
+@media (max-width: 576px) {
+    .logo {
+        height: 20vw;
+        width: 60vw;
+        margin: 15vw auto 5vw auto;
+    }
+}
+
+/* Medium devices (up to 768px) */
+@media (max-width: 768px) {
+    .logo {
+        height: 18vw;
+        width: 50vw;
+        margin: 12vw auto 5vw auto;
+    }
+}
+
+/* Large devices (up to 992px) */
+@media (max-width: 992px) {
+    .logo {
+        height: 16vw;
+        width: 45vw;
+        margin: 11vw auto 5vw auto;
+    }
+}
+
+/* Extra large devices (1200px and up) */
+@media (min-width: 1200px) {
+    .logo {
+        height: 8vw;
+        width: 25vw;
+        margin: 6vw auto 5vw auto;
     }
 }

@@ -1,46 +1,44 @@
-
-
-body{
-    color:white;
+body {
+    color: white;
 }
 
-button{
-    width:100%;
+button {
+    width: 100%;
 }
-.title-balance{
+
+.title-balance {
     position: relative;
-    margin:auto;
+    margin: auto;
     text-align: center;
-    font-size:0.75rem;
-}
-row{
-    margin:auto;
-    position: relative;
-}
-#recentTransactions{
-    margin-bottom: 200px!important;
+    font-size: 0.75rem;
 }
 
-.trans-col{
+row {
+    margin: auto;
+    position: relative;
+}
+
+#recentTransactions {
+    margin-bottom: 200px !important;
+}
+
+.trans-col {
     font-size: 3.1vw;
 }
 
-.balance{
-    font-weight:700;
+.balance {
+    font-weight: 700;
     text-align: center;
     font-size: 2.5rem;
     position: relative;
-    margin:auto;
+    margin: auto;
 }
 
-.withdraw{
-    align-items: center;
-    color:white;
-}
-.deposit{
+.withdraw, .deposit {
     align-items: center;
     color: white;
 }
+
 .modal-header {
     display: flex;
     justify-content: space-between; /* Ensures space between left, middle, and right elements */
@@ -54,38 +52,41 @@ row{
     margin: 0; /* Removes default margin to aid in centering */
 }
 
-.btn-link{
-    font-size:3.1vw;
+.btn-link {
+    font-size: 3.1vw;
 }
 
-.close{
-    width:15vw;
-    color:white;
-    font-size:1rem;
-    text-shadow:none;
-
+.close {
+    width: 15vw;
+    color: white;
+    font-size: 1rem;
+    text-shadow: none;
 }
-.close:hover{
-    color:rgb(155, 155, 155)!important;
+
+.close:hover {
+    color: rgb(155, 155, 155) !important;
     background-color: none;
 }
+
 /* Ensuring the cancel and add buttons do not grow to maintain their intended sizes */
 .modal-header .btn-secondary, .modal-header .btn-primary {
     flex-shrink: 0;
 }
 
-.modal-content{
+.modal-content {
     background-color: rgb(65, 65, 65);
-    margin-top:25vw;
+    margin-top: 25vw;
 }
+
 .modal-body {
     background-color: rgb(65, 65, 65);
-    color:white;
+    color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;   /* Aligns children elements vertically */
 }
-#new_category_input, #date, #amount, #merchant, #category{
+
+#new_category_input, #date, #amount, #merchant, #category {
     background-color: rgb(155, 155, 155);
     border-radius: 50px;
     color: white;
@@ -93,23 +94,22 @@ row{
     height: 10vw;
 }
 
-#submit{
-    position:relative;
-    width:100%;
+#submit {
+    position: relative;
+    width: 100%;
     border-radius: 25px;
 }
 
-ul, ol { /* This applies the style to all unordered and ordered lists */
+ul, ol {
     list-style-type: none; /* Removes bullet points or numbers */
     padding: 0; /* Removes padding */
     margin: 0; /* Removes margins */
 }
   
 select, input::placeholder {
-    color: #ffffff!important; /* Light gray color; adjust as needed */
-    opacity: 1; /* Optional: Ensures the color isn't partially transparent */
-  }
-
+    color: #ffffff !important; /* Light gray color; adjust as needed */
+    opacity: 1; /* Ensures the color isn't partially transparent */
+}
 
 .switch-field {
     display: flex;
@@ -117,9 +117,11 @@ select, input::placeholder {
     width: 100%;              /* Ensures it takes the full width to allow centering */
     margin: 10px auto;        /* Top and bottom margin 10px, left and right auto */
 }
+
 .switch-field input {
     display: none;
 }
+
 .switch-field label {
     background-color: rgb(155, 155, 155);
     color: rgb(255, 255, 255);
@@ -131,25 +133,125 @@ select, input::placeholder {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
+
 .switch-field label:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
 .switch-field input:checked + label {
     background-color: #28a745;
     color: white;
 }
 
-#transaction_type{
-    margin:auto;
-    position:relative;
-    display:flex;
+#transaction_type {
+    margin: auto;
+    position: relative;
+    display: flex;
 }
 
-.transaction-img{
-    width:4vw;
-    height:4vw;
+.transaction-img {
+    width: 4vw;
+    height: 4vw;
 }
 
-.top-container-fluid{
-    margin-bottom:25vw;
+.top-container-fluid {
+    margin-bottom: 25vw;
+}
+
+/* Media Queries for different screen sizes */
+
+/* Small devices (up to 576px) */
+@media (max-width: 576px) {
+    .title-balance {
+        font-size: 0.6rem;
+    }
+
+    .balance {
+        font-size: 2rem;
+    }
+
+    .btn-link {
+        font-size: 4vw;
+    }
+
+    .close {
+        width: 20vw;
+        font-size: 0.875rem;
+    }
+
+    #new_category_input, #date, #amount, #merchant, #category {
+        height: 12vw;
+    }
+}
+
+/* Medium devices (up to 768px) */
+@media (max-width: 768px) {
+    .title-balance {
+        font-size: 0.7rem;
+    }
+
+    .balance {
+        font-size: 2.2rem;
+    }
+
+    .btn-link {
+        font-size: 3.5vw;
+    }
+
+    .close {
+        width: 18vw;
+        font-size: 0.95rem;
+    }
+
+    #new_category_input, #date, #amount, #merchant, #category {
+        height: 11vw;
+    }
+}
+
+/* Large devices (up to 992px) */
+@media (max-width: 992px) {
+    .title-balance {
+        font-size: 0.75rem;
+    }
+
+    .balance {
+        font-size: 2.3rem;
+    }
+
+    .btn-link {
+        font-size: 3.2vw;
+    }
+
+    .close {
+        width: 16vw;
+        font-size: 1rem;
+    }
+
+    #new_category_input, #date, #amount, #merchant, #category {
+        height: 10.5vw;
+    }
+}
+
+/* Extra large devices (1200px and up) */
+@media (min-width: 1200px) {
+    .title-balance {
+        font-size: 0.8rem;
+    }
+
+    .balance {
+        font-size: 2.5rem;
+    }
+
+    .btn-link {
+        font-size: 3vw;
+    }
+
+    .close {
+        width: 14vw;
+        font-size: 1.1rem;
+    }
+
+    #new_category_input, #date, #amount, #merchant, #category {
+        height: 10vw;
+    }
 }
