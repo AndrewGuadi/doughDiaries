@@ -20,8 +20,8 @@
     </div>
 <!-- Log in form -->
     <div class="container">
-        <img class='mt-0' src="{{ url_for('static', filename='img/doughlogo.png') }}" alt="Dough Diaries Logo">
-        <img src="{{ url_for('static', filename='img/moneySigns.png') }}" alt="Money Signs">
+        <img id="logo" class='mt-0' src="{{ url_for('static', filename='img/doughlogo.png') }}" alt="Dough Diaries Logo">
+        <!-- <img id="moneySigns" src="{{ url_for('static', filename='img/moneySigns.png') }}" alt="Money Signs"> -->
         <h1 class="mb-2">Sign in</h1>
         <form method="POST">
             {{ form.hidden_tag() }}
