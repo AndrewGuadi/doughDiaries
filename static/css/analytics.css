@@ -2,6 +2,10 @@ body{
     color:white;
         }
 
+h2 {
+    font-size: 14px;
+        }
+
 .back-button {
     color: white;  /* Sets the color of the arrow */
     padding: 10px; /* Adjust padding as needed */
@@ -15,7 +19,7 @@ body{
     text-decoration: none; /* Removes underline effect on hover */
     background: rgba(255, 255, 255, 0.1); /* Optional: slight background on hover */
             }
-            
+
 #pieChart{
     margin-bottom:200px !important;
             }
