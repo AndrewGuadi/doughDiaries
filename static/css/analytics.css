@@ -1,0 +1,21 @@
+body{
+    color:white;
+        }
+
+.back-button {
+    color: white;  /* Sets the color of the arrow */
+    padding: 10px; /* Adjust padding as needed */
+    font-size: 24px; /* Adjust size as needed */
+    border: none; /* Removes border */
+    background: transparent; /* Transparent background */
+            }
+
+.back-button:hover {
+    color: #ccc; /* Lighter shade on hover for visual feedback */
+    text-decoration: none; /* Removes underline effect on hover */
+    background: rgba(255, 255, 255, 0.1); /* Optional: slight background on hover */
+            }
+            
+#pieChart{
+    margin-bottom:200px !important;
+            }
