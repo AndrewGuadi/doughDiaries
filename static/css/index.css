@@ -6,6 +6,10 @@ button {
     width: 100%;
 }
 
+btn {
+    color: grey;
+}
+
 .title-balance {
     position: relative;
     margin: auto;
@@ -196,6 +200,7 @@ select, input::placeholder {
 
     .btn-link {
         font-size: 3.5vw;
+        color: grey;
     }
 
     .close {
@@ -220,6 +225,7 @@ select, input::placeholder {
 
     .btn-link {
         font-size: 3.2vw;
+        color: grey;
     }
 
     .close {
@@ -244,6 +250,7 @@ select, input::placeholder {
 
     .btn-link {
         font-size: 3vw;
+        color: grey;
     }
 
     .close {
